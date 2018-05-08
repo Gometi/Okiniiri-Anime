@@ -25,7 +25,16 @@ https://docs.google.com/drawings/d/1xXcrzMZjXLahtlbpDxxkO-BbHNMC2sUgGs__Zu7QLLI/
 
 https://drive.google.com/open?id=1HJfpCrMB95IRqWGU_o75xIb4IiWgf5k0edn7ibWZJec
 
-## Technologies Used
+## MVP
+- API
+- CRUD
+- AUTH
+
+## POST MVP
+- Styling
+- Add Streaming links
+
+## Technologies To Be Used
 - Node
 - Express
 - React
