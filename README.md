@@ -16,7 +16,7 @@ https://docs.google.com/drawings/d/1tXzXdZx1K7mDB-6FD89a6jxcXmP95WJrpvysxJb3yyY/
 https://docs.google.com/drawings/d/1mykaj_SunMakhcLh5qIybShsjcuHHY6NhQKOBiC9gUo/edit
 
 ### Anime Details Page:
-https://docs.google.com/drawings/d/1mykaj_SunMakhcLh5qIybShsjcuHHY6NhQKOBiC9gUo/edit
+https://docs.google.com/drawings/d/1XXcstsBPXD53BkFqHqWL1nB9NMymJBGkA9bAQ0JPw-8/edit
 
 ### User Page:
 https://docs.google.com/drawings/d/1xXcrzMZjXLahtlbpDxxkO-BbHNMC2sUgGs__Zu7QLLI/edit
