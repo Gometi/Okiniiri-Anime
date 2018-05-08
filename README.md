@@ -33,7 +33,6 @@ https://drive.google.com/open?id=1HJfpCrMB95IRqWGU_o75xIb4IiWgf5k0edn7ibWZJec
 - Html
 - Css
 - Javascript
-- Jquery
 - Git
 
 ## APIs
