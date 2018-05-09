@@ -1,0 +1,28 @@
+{
+  "name": "okiniiri-anime",
+  "version": "1.0.0",
+  "description": "This is an app for Anime fans where they can search for their favorite Anime. They can also create a library where they can add various Animes they want to watch.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "reset-db": "psql anime_db -f db/schema.sql",
+    "start-server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gometi/Okiniiri-Anime.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gometi/Okiniiri-Anime/issues"
+  },
+  "homepage": "https://github.com/Gometi/Okiniiri-Anime#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.17.4",
+    "pg-promise": "^8.4.3"
+  }
+}
