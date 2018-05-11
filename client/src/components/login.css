@@ -1,0 +1,17 @@
+.body{
+  height: 800px;
+  width: 1000px;
+  background-color: teal;
+  margin: auto;
+}
+.main{
+  padding-top: 50px;
+}
+.Login {
+  text-align: center;
+  margin: auto;
+}
+.Login_form {
+  text-align: center;
+  margin: auto;
+}

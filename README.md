@@ -49,3 +49,20 @@ https://drive.google.com/open?id=1HJfpCrMB95IRqWGU_o75xIb4IiWgf5k0edn7ibWZJec
 
 ## Middleware
 - 
+
+Plan of attack Time continuum
+
+Legend [0]=not accomplished [1]=accomplished
+
+day1: 
+	Test and Tinker with Kitsu API[1] 
+	Create a visual wireframe of Front End[1]
+	Create data tables for Users and Animes[1]
+
+
+day2:
+	Code out the get Models[0]
+	Code out the get Routes[0]
+	Code out the get Controllers[0]
+
+day3 
