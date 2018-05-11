@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 class Anime extends Component{
     constructor(props){
@@ -6,9 +7,11 @@ class Anime extends Component{
         this.name = this.props.name;
         this.name = this.name.replace(" ", "%20");
        this.state = {
+           id: "",
            name: "",
            posterImage: ""
        }
+        this.link = '/anime_details/'
     }
     fetchAnime() {
         fetch(`https://kitsu.io/api/edge/anime?filter[text]=${this.name}`
@@ -19,12 +22,12 @@ class Anime extends Component{
                     throw Error('oops: ', resp.message);
                 }
                 return resp.json();
-            }).then(data => {
-               console.log(data);
-                console.log(data.data[0].attributes.titles.en_jp)
+            }).then(anime => {
+              
                this.setState({
-                   name: data.data[0].attributes.titles.en_jp,
-                   posterImage: data.data[0].attributes.posterImage.small
+                   id: anime.data[0].id,
+                   name: anime.data[0].attributes.titles.en_jp,
+                   posterImage: anime.data[0].attributes.posterImage.small
                })
             })
             .catch(err => console.log(`There is an error: ${err}`));
@@ -39,7 +42,7 @@ class Anime extends Component{
             <div>
              
              <p>{this.state.name}</p>
-             <img src={this.state.posterImage} />
+             <Link to={this.link + this.state.id}><img src={this.state.posterImage} /></Link>
             </div>
         )
     }
