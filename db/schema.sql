@@ -5,3 +5,4 @@ CREATE TABLE library(
  anime_name TEXT 
 );
 
+INSERT INTO library (anime_id, anime_name) VALUES('3', 'NARUTO' );
