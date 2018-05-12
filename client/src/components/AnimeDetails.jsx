@@ -21,6 +21,7 @@ class AnimeDetails extends Component {
         }
         this.link = "https://www.youtube.com/embed/";
         this.addToLibrary = this.addToLibrary.bind(this);
+        this.removeFromLibrary = this.removeFromLibrary.bind(this);
     }
 
     fetchAnime() {
@@ -77,7 +78,19 @@ class AnimeDetails extends Component {
                 if (!resp.ok) throw new Error(resp.statusMessage);
                 return resp.json();
             })
-            .then(data => console.log('added to library'))
+            .then(data => (data) ? console.log('added to library'): console.log('Could not add to library'))
+    }
+
+    removeFromLibrary(){
+        const options = {
+            method: "DELETE"
+        }
+        fetch(`/animes/${this.state.id}`, options)
+            .then(resp => {
+                if (!resp.ok) throw new Error(resp.statusMessage);
+                return resp.json();
+            })
+            .then(console.log('deleted'))
     }
 
     render() {
@@ -102,6 +115,8 @@ class AnimeDetails extends Component {
                     </iframe>
                     <div>
                         <button onClick={this.addToLibrary}>Add To Watch List</button>
+                        <br/>
+                            <button onClick={this.removeFromLibrary}>Remove From Watch List</button>
                     </div>
                 </div>
             </div>

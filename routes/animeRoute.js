@@ -6,6 +6,9 @@ router.route('/')
     .get(animeController.getAll, sendAnimeController.sendAnime, sendAnimeController.sendErrResp )
     .post(animeController.create, sendAnimeController.sendAnime, sendAnimeController.sendErrResp)
 
+    router.route('/:id')
+        .delete(animeController.destroy, sendAnimeController.sendAnime, sendAnimeController.sendErrResp)
+
 
 
 
