@@ -58,7 +58,12 @@ class AnimeDetails extends Component {
     }
 
     addToLibrary(){
-     console.log('added');
+     fetch('/animes')
+     .then(resp => {
+         if (!resp.ok) throw new Error(resp.statusMessage);
+         return resp.json();
+     })
+     .then(data => console.log(data))
     }
 
     render() {

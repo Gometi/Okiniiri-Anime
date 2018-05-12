@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const controller = require('../controllers/animeController');
+const animeController = require('../controllers/animeController');
+const sendAnimeController = require('../controllers/sendAnimeController');
 
-console.log('FROM THE rOUTER');
 router.route('/')
-.get(controller.getAll)
+    .get(animeController.getAll, sendAnimeController.sendAnime, sendAnimeController.sendErrResp )
 
 
 
