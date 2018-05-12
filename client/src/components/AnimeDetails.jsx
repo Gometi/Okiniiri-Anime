@@ -16,7 +16,8 @@ class AnimeDetails extends Component {
             startDate: "",
             endDate: "",
             rating: "",
-            trailer: ""
+            trailer: "",
+            anime: "Not Added To Library"
 
         }
         this.link = "https://www.youtube.com/embed/";
@@ -60,25 +61,34 @@ class AnimeDetails extends Component {
     }
 
     addToLibrary() {
-        const data = {
-            anime_id: this.state.id,
-            anime_name: this.state.name
-        }
 
-        const animeData = JSON.stringify(data);
-        const options = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: animeData
+        const anime = {
+            id: this.state.id,
+            name: this.state.name
         }
-        fetch('/animes', options)
-            .then(resp => {
-                if (!resp.ok) throw new Error(resp.statusMessage);
-                return resp.json();
-            })
-            .then(data => (data) ? console.log('added to library'): console.log('Could not add to library'))
+        this.props.addToLibrary(anime);
+        this.setState({
+            anime: "Added To Library"
+        })
+        // const data = {
+        //     anime_id: this.state.id,
+        //     anime_name: this.state.name
+        // }
+
+        // const animeData = JSON.stringify(data);
+        // const options = {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     },
+        //     body: animeData
+        // }
+        // fetch('/animes', options)
+        //     .then(resp => {
+        //         if (!resp.ok) throw new Error(resp.statusMessage);
+        //         return resp.json();
+        //     })
+        //     .then(data => (data) ? console.log('added to library'): console.log('Could not add to library'))
     }
 
     removeFromLibrary(){
@@ -115,6 +125,9 @@ class AnimeDetails extends Component {
                     </iframe>
                     <div>
                         <button onClick={this.addToLibrary}>Add To Watch List</button>
+                        <div className="add_indicator">
+                             <p>{this.state.name} {this.state.anime}</p> 
+                        </div>
                         <br/>
                             <button onClick={this.removeFromLibrary}>Remove From Watch List</button>
                     </div>
