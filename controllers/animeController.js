@@ -9,15 +9,18 @@ function getAll(req, res, next) {
         .catch(next);
 }
 
-function getOne(req, res, next) {
-	animeDb.getOne(id)
+function create(req, res, next) {
+	animeDb.create(req.body)
 		.then(data => {
-			console.log(data);
+			res.locals.quote = data;
 			next();
 		})
 		.catch(next);
 }
+
+
+
 module.exports = {
 	getAll,
-	getOne
+	create
 }

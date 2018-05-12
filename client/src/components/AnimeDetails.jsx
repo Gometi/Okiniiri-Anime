@@ -19,7 +19,8 @@ class AnimeDetails extends Component {
             trailer: ""
 
         }
-        this.link = "https://www.youtube.com/embed/"
+        this.link = "https://www.youtube.com/embed/";
+        this.addToLibrary = this.addToLibrary.bind(this);
     }
 
     fetchAnime() {
@@ -34,7 +35,7 @@ class AnimeDetails extends Component {
             }).then(anime => {
                 console.log(anime);
                 console.log(anime.data[0].attributes.titles.en_jp)
-                     
+
                 this.setState({
                     id: anime.data[0].id,
                     name: anime.data[0].attributes.titles.en_jp,
@@ -57,13 +58,26 @@ class AnimeDetails extends Component {
         this.fetchAnime();
     }
 
-    addToLibrary(){
-     fetch('/animes')
-     .then(resp => {
-         if (!resp.ok) throw new Error(resp.statusMessage);
-         return resp.json();
-     })
-     .then(data => console.log(data))
+    addToLibrary() {
+        const data = {
+            anime_id: this.state.id,
+            anime_name: this.state.name
+        }
+
+        const animeData = JSON.stringify(data);
+        const options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: animeData
+        }
+        fetch('/animes', options)
+            .then(resp => {
+                if (!resp.ok) throw new Error(resp.statusMessage);
+                return resp.json();
+            })
+            .then(data => console.log('added to library'))
     }
 
     render() {
@@ -87,7 +101,7 @@ class AnimeDetails extends Component {
                         src={this.link + this.state.trailer}>
                     </iframe>
                     <div>
-                      <button onClick={this.addToLibrary}>Add To Watch List</button>
+                        <button onClick={this.addToLibrary}>Add To Watch List</button>
                     </div>
                 </div>
             </div>
