@@ -1,13 +1,13 @@
 const router = require('express').Router();
 const animeController = require('../controllers/animeController');
-const sendAnimeController = require('../controllers/sendAnimeController');
+const sendResponse = require('../controllers/sendResponse');
 
 router.route('/')
-    .get(animeController.getAll, sendAnimeController.sendAnime, sendAnimeController.sendErrResp )
-    .post(animeController.create, sendAnimeController.sendAnime, sendAnimeController.sendErrResp)
+    .get(animeController.getAll, sendResponse.sendOkResp, sendResponse.sendErrResp )
+    .post(animeController.create, sendResponse.sendOkResp, sendResponse.sendErrResp)
 
     router.route('/:id')
-        .delete(animeController.destroy, sendAnimeController.sendAnime, sendAnimeController.sendErrResp)
+        .delete(animeController.destroy, sendResponse.sendOkResp, sendResponse.sendErrResp)
 
 
 

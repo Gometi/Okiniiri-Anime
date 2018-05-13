@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Gometi/Okiniiri-Anime#readme",
   "dependencies": {
+    "bcrypt": "^2.0.1",
     "body-parser": "^1.18.2",
     "concurrently": "^3.5.1",
     "express": "^4.16.3",

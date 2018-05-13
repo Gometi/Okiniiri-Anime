@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Register from "./Register";
 
 function Header() {
     return (
@@ -12,6 +13,9 @@ function Header() {
                     <li><Link to="/library">Library</Link></li>
                 </ul>
             </nav>
+            <div>
+             <Register/>
+            </div>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-function sendAnime(req, res) {
+function sendOkResp(req, res) {
     res.json({
         status: 'ok',
         data: res.locals.animes || res.locals.anime
@@ -14,6 +14,6 @@ function sendErrResp(err, req, res, next) {
 }
 
 module.exports = {
-    sendAnime,
+    sendOkResp,
     sendErrResp
 };
