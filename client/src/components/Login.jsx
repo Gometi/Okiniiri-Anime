@@ -1,25 +1,22 @@
 import React, { Component } from "react";
 
-class Register extends Component {
+class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
-                username: "",
-                password: "",
-                email: ""
-          
+            password: "",
+            email: ""
         }
         this.userData;
-
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleInputChange(e) {
         const { name, value } = e.target;
-         this.userData = {
-              url: '/register',
-              post: this.state
+        this.userData = {
+            url: '/login',
+            post: this.state
         }
         this.setState({
             [name]: value
@@ -35,11 +32,7 @@ class Register extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <div>
-                        <label>Username:
-           <input type="text" onChange={this.handleInputChange} value={this.state.username} name="username" />
-                        </label>
-                    </div>
+                    
                     <div>
                         <label>Email:
            <input type="email" onChange={this.handleInputChange} value={this.state.email} name="email" />
@@ -50,7 +43,7 @@ class Register extends Component {
            <input type="password" onChange={this.handleInputChange} value={this.state.password} name="password" />
                         </label>
                     </div>
-                    <button type="submit">Register</button>
+                    <button type="submit">Login</button>
                 </form>
                 <div>
                 </div>
@@ -59,4 +52,4 @@ class Register extends Component {
     }
 }
 
-export default Register;
+export default Login;

@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Header from './components/Header';
 import AnimeDetails from './components/AnimeDetails';
 import Library from './components/Library';
+import RegisterLogin from './components/RegisterLogin';
 import {Switch, Route, Redirect} from 'react-router-dom';
 
 class App extends Component {
@@ -45,6 +46,7 @@ class App extends Component {
            id = {props.match.params.id} addToLibrary = {this.addToLibrary.bind(this)}
            />)} />
            <Route path='/library'  component={Library} />
+          <Route path='/register_login' component={RegisterLogin} />
           <Route exact path='/' component={Home} />
       </Switch>
       
