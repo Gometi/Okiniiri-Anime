@@ -21,13 +21,13 @@ class User extends Component {
             
               <ul>
                   
-                  <li><Link to="/anime-details/:id">Naruto</Link>
+                  <li><Link to="/anime-details/:id">Naruto</Link> |
                   <button type='submit'>remove</button> </li>
                   
-                  <li><Link to="/anime-details/:id">One Piece</Link>
+                  <li><Link to="/anime-details/:id">One Piece</Link> |
                   <button type='submit'>remove</button></li>
                  
-                   <li><Link to="/anime-details/:id">Dragon Ball Z</Link>
+                   <li><Link to="/anime-details/:id">Dragon Ball Z</Link> |
                   <button type='submit'>remove</button></li>
                  
               </ul>
