@@ -31,3 +31,6 @@
 li{
   list-style: none;
 }
+#buttonClick{
+   display: none;
+}

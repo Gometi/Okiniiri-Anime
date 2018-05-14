@@ -70,25 +70,7 @@ class AnimeDetails extends Component {
         this.setState({
             anime: "Added To Library"
         })
-        // const data = {
-        //     anime_id: this.state.id,
-        //     anime_name: this.state.name
-        // }
-
-        // const animeData = JSON.stringify(data);
-        // const options = {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: animeData
-        // }
-        // fetch('/animes', options)
-        //     .then(resp => {
-        //         if (!resp.ok) throw new Error(resp.statusMessage);
-        //         return resp.json();
-        //     })
-        //     .then(data => (data) ? console.log('added to library'): console.log('Could not add to library'))
+        
     }
 
     removeFromLibrary(){
