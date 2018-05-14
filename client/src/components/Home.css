@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Philosopher');
+@import url('https://fonts.googleapis.com/css?family=Bellefair');
+
+/* the main div for the title container */
+.home__header{
+    text-align: center;
+    font-size: 300%;
+    position: relative;
+}
+
+/* image container */
+.header--img{
+    height: 70vh;
+    width: 100%;
+    margin: 0 auto 2rem auto;
+    background-image: linear-gradient(
+        to right bottom,
+         rgba(52, 228, 234, 0.897),
+         rgba(153, 74, 218, 0.911)),
+          url("./images/slide_1.jpg");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0px 10px 48px 2px rgba(0,0,0,0.75);
+}
+
+/* title div */
+.header--title{
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    color: white;
+    font-family: 'Bellefair', serif;
+}
+
+/* the main header */
+.title--main{
+    font-family: 'Philosopher', sans-serif;
+}
+
+.title--btn{
+    border:0px solid transparent;
+    background-color: rgba(15, 15, 15, 0.171);
+    color: rgba(244, 248, 252, 0.918);
+    padding: 1.5rem 2rem 1.5rem 2rem;
+    font-size: 2rem;
+
+}
+

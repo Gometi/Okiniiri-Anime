@@ -12,7 +12,7 @@ function getAll(req, res, next) {
 function getOne(req, res, next) {
 	animeDb.getOne()
 		.then(data => {
-			res.locals.quote = data;
+			res.locals.anime = data;
 			next();
 		})
 		.catch(next);
@@ -21,7 +21,7 @@ function getOne(req, res, next) {
 function create(req, res, next) {
 	animeDb.create(req.body)
 		.then(data => {
-			res.locals.quote = data;
+			res.locals.anime = data;
 			next();
 		})
 		.catch(next);

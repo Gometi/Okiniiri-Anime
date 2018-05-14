@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import './AnimeDetails.css';
+import { Button } from 'react-bootstrap';
 
 class AnimeDetails extends Component {
     constructor(props) {
@@ -17,12 +19,14 @@ class AnimeDetails extends Component {
             endDate: "",
             rating: "",
             trailer: "",
-            anime: "Not Added To Library"
+            anime: "Not Added To Library",
+            show: false
 
         }
         this.link = "https://www.youtube.com/embed/";
         this.addToLibrary = this.addToLibrary.bind(this);
         this.removeFromLibrary = this.removeFromLibrary.bind(this);
+        this.display = this.display.bind(this);
     }
 
     fetchAnime() {
@@ -85,34 +89,65 @@ class AnimeDetails extends Component {
             .then(console.log('deleted'))
     }
 
+    // toggle the trailer
+    display(){
+        this.setState({
+            show: !this.state.show
+        })
+    }
+
     render() {
         return (
-            <div>
+            <div className="details">
+                <div className="details__header">
+                    <img className="details--img" src={this.state.coverImage} />
+                    <h2 className="details--head">{this.state.name}</h2>
+                    <div className="details--overlay"></div>
+                </div>
+        
+                
 
-                <img src={this.state.posterImage} />
-                <h2>{this.state.name}</h2>
-                <p>{this.state.synopsis}</p>
-                <img src={this.state.coverImage} />
+                <div className="details__info">
+                    <div className="info--syn">
+                        <p>{this.state.synopsis}</p>
+                    </div>
+                    
+                    <div className="info--list">
+                        <img className="details__pic" src={this.state.posterImage} />
+                        <h3 className="list--head">Anime Details</h3>
+                        <p>English: {this.state.name}</p>
+                        <p>Japanese: {this.state.Japanese}</p>
+                        <p>Type: {this.state.showType}</p>
+                        <p>Episodes: {this.state.episodeCount}</p>
+                        <p>Status: {this.state.status}</p>
+                        <p>Rating: {this.state.rating}</p>
+                        <button onClick={this.display} className="details--watch"> Watch trailer  </button>
+                    </div>
+                 </div>
+        
                 <div>
-                    <h3>Anime Details</h3>
-                    <p>English: {this.state.name}</p>
-                    <p>Japanese: {this.state.Japanese}</p>
-                    <p>Type: {this.state.showType}</p>
-                    <p>Episodes: {this.state.episodeCount}</p>
-                    <p>Status: {this.state.status}</p>
-                    <p>Rating: {this.state.rating}</p>
-                    <h2>Trailer</h2>
-                    <iframe title="trailer" width="420" height="315"
+                    
+                <div className="details--video">
+                    
+                    {
+                        this.state.show?<iframe title="trailer" width="420" height="315"
                         src={this.link + this.state.trailer}>
-                    </iframe>
+                        </iframe>:null
+                    }
+                    
                     <div>
-                        <button onClick={this.addToLibrary}>Add To Watch List</button>
+                        <button onClick={this.addToLibrary} className="details--add">Add To Watch List</button>
+                        <button onClick={this.removeFromLibrary} className="details--remove">Remove From Watch List</button>
                         <div className="add_indicator">
                              <p>{this.state.name} {this.state.anime}</p> 
                         </div>
-                        <br/>
-                            <button onClick={this.removeFromLibrary}>Remove From Watch List</button>
+                     
+                            
                     </div>
+                
+                </div>
+                    
+                    
                 </div>
             </div>
         )

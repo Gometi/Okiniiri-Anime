@@ -7,6 +7,7 @@ import AnimeDetails from './components/AnimeDetails';
 import Library from './components/Library';
 import RegisterLogin from './components/RegisterLogin';
 import SearchResults from './components/SearchResults';
+import Footer from './components/Footer';
 import {Switch, Route, Redirect} from 'react-router-dom';
 
 class App extends Component {
@@ -53,7 +54,7 @@ class App extends Component {
           <Route path='/register_login' component={RegisterLogin} />
           <Route exact path='/' component={Home} />
       </Switch>
-      
+        <Footer />
       </div>
     );
   }
