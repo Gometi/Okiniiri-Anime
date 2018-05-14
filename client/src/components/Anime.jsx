@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import './Anime.css';
+import {Link} from 'react-router-dom';
 
 class Anime extends Component{
     constructor(props){
@@ -6,9 +8,11 @@ class Anime extends Component{
         this.name = this.props.name;
         this.name = this.name.replace(" ", "%20");
        this.state = {
+           id: "",
            name: "",
            posterImage: ""
        }
+        this.link = '/anime_details/'
     }
     fetchAnime() {
         fetch(`https://kitsu.io/api/edge/anime?filter[text]=${this.name}`
@@ -19,12 +23,12 @@ class Anime extends Component{
                     throw Error('oops: ', resp.message);
                 }
                 return resp.json();
-            }).then(data => {
-               console.log(data);
-                console.log(data.data[0].attributes.titles.en_jp)
+            }).then(anime => {
+              
                this.setState({
-                   name: data.data[0].attributes.titles.en_jp,
-                   posterImage: data.data[0].attributes.posterImage.small
+                   id: anime.data[0].id,
+                   name: anime.data[0].attributes.titles.en_jp,
+                   posterImage: anime.data[0].attributes.posterImage.small
                })
             })
             .catch(err => console.log(`There is an error: ${err}`));
@@ -36,10 +40,12 @@ class Anime extends Component{
 
     render(){
         return(
-            <div>
-             
-             <p>{this.state.name}</p>
-             <img src={this.state.posterImage} />
+            <div className="anime">
+                <Link to={this.link + this.state.id}>
+                    <img className="anime__img" src={this.state.posterImage} />
+                </Link>
+                
+                <p className="anime__title">{this.state.name}</p>
             </div>
         )
     }

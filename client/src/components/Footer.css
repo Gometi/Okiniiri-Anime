@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Cookie');
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond');
+.footer{
+    height: 30vh;
+    background-color: rgba(0, 0, 0, 0.89);
+    text-align: center;
+    color: rgba(245, 246, 248, 0.932);
+    position: relative;
+}
+
+.footer__quote{
+    font-size: 3.2rem;
+    padding: 1rem;
+    font-family: 'Cookie', cursive;
+}
+
+.footer__subquotes{
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.footer__copyright{
+    color: rgba(255, 255, 255, 0.952);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-size: 1rem;
+    padding: 4px;
+}

@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css?family=Belleza');
+
+/* image container */
+.details__header{
+    height: 60vh;
+    width: 100vw;
+    background-position: center;
+    text-align: center;
+    position: relative;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    box-shadow: 0px 10px 48px 2px rgba(0,0,0,0.75);
+}
+
+/* cover image */
+.details--img{
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    z-index: 5;
+    height: 100%;
+    width: 100%;
+    background-position: 100% 100%;    
+}
+
+.details--overlay{
+    height: 60vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(
+        to right bottom,
+         rgba(52, 228, 234, 0.897),
+         rgba(153, 74, 218, 0.911));
+    z-index: 3;
+}
+/* header for the anime */
+.details--head{
+    font-family: 'Belleza', sans-serif;
+    text-align: center;
+    padding: 1rem;
+    text-align: center;
+    z-index: 2;
+    position: absolute;
+    top: 33%;
+    font-size: 480%;
+    color: rgba(255, 255, 255, 0.856);
+    z-index: 10;
+}
+
+/* profile pic for the anime */
+.details__pic{
+    width: 20vw;
+    border: 2px solid rgba(0, 0, 0, 0.644);
+    box-shadow: 0px 5px 68px 10px rgba(0,0,0,0.75);
+    z-index: 10;
+}
+
+/* anime details */
+.details__info{
+    padding: 2rem;
+    display: flex;
+    margin: 2rem auto 0 auto;
+    width: 90vw;
+    font-size: 90%;
+    color: rgba(0, 0, 0, 0.856);
+}
+.info--syn{
+    flex: 4;
+    padding: 3rem;
+    font-size: 150%;
+    word-break: break-word;
+}
+
+.info--list{
+    flex: 2;
+    padding: 1rem;
+    font-size: 150%;
+}
+
+.list--head{
+   border-bottom: 1px solid black;
+   text-align: center; 
+}
+
+/* video  */
+.details--video{
+    text-align: center;
+    /* transform: translate(0, -25rem); */
+}
+
+/* add remove buttons */
+.details--watch{
+   padding: 1rem;
+   color: rgba(240, 248, 255, 0.877);
+   background-color:rgba(33, 34, 31, 0.911);
+}
+.details--add, .details--remove{
+    margin-right: 10px;
+    padding: 1rem;
+    background-color: rgba(27, 26, 26, 0.877);
+    color: rgba(240, 248, 255, 0.918);
+}

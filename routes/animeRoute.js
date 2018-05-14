@@ -1,9 +1,13 @@
 const router = require('express').Router();
-const controller = require('../controllers/animeController');
+const animeController = require('../controllers/animeController');
+const sendResponse = require('../controllers/sendResponse');
 
-console.log('FROM THE rOUTER');
 router.route('/')
-.get(controller.getAll)
+    .get(animeController.getAll, sendResponse.sendOkResp, sendResponse.sendErrResp )
+    .post(animeController.create, sendResponse.sendOkResp, sendResponse.sendErrResp)
+
+    router.route('/:id')
+        .delete(animeController.destroy, sendResponse.sendOkResp, sendResponse.sendErrResp)
 
 
 

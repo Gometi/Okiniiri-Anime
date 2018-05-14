@@ -1,0 +1,124 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 1.5rem;
+    /* position: fixed;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    top: 0%;
+    z-index: 10; */
+    
+}
+
+/* logo */
+.header__img{
+    width: 120px;
+    height: 100px;
+}
+
+.header__links{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* anchor tags */
+.links--bar{
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.774);
+    padding: 1rem;
+    position: relative;
+}
+.links--bar:hover{
+    text-decoration: none;
+}
+
+.links--bar:before{
+    content: '';
+    background:transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 2px solid transparent;
+    height: 0;
+    width: 0;
+    
+}
+.links--bar:hover:before{
+    animation: go .3s linear forwards;
+}
+
+.links--bar:after{
+    content: '';
+    background:transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 2px solid transparent;
+    height: 0;
+    width: 0;  
+}
+
+.links--bar:hover:after{
+    animation: goLeft .3s linear forwards;
+    animation-delay: .3s;
+}
+
+.header li{
+    padding: 2rem;   
+}
+
+@keyframes go {
+    0%{
+        width: 0;
+        height: 0;
+        border-top-color: rgba(52, 228, 234, 0.897);
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+    50%{
+        width: 100%;
+        height: 0%;
+        border-top-color: rgba(52, 228, 234, 0.897);
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+    100%{
+        width: 100%;
+        height: 100%;
+        border-top-color: rgba(52, 228, 234, 0.897);
+        border-right-color: rgba(52, 228, 234, 0.897);
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+}
+
+@keyframes goLeft {
+    0%{
+        width: 0;
+        height: 0;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: rgba(153, 74, 218, 0.911);
+    }
+    50%{
+        width: 0%;
+        height: 100%;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: rgba(153, 74, 218, 0.911);
+        border-left-color: rgba(153, 74, 218, 0.911);
+    }
+    100%{
+        width: 100%;
+        height: 100%;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: rgba(153, 74, 218, 0.911);
+        border-left-color: rgba(153, 74, 218, 0.911);
+    }
+}
