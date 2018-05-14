@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './Anime.css';
 import {Link} from 'react-router-dom';
 
 class Anime extends Component{
@@ -39,10 +40,12 @@ class Anime extends Component{
 
     render(){
         return(
-            <div>
-             
-             <p>{this.state.name}</p>
-             <Link to={this.link + this.state.id}><img src={this.state.posterImage} /></Link>
+            <div className="anime">
+                <Link to={this.link + this.state.id}>
+                    <img className="anime__img" src={this.state.posterImage} />
+                </Link>
+                
+                <p className="anime__title">{this.state.name}</p>
             </div>
         )
     }
