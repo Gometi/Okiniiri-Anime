@@ -23,7 +23,7 @@ CREATE TABLE users(
  password VARCHAR(30)
 );
 
-INSERT INTO users (first_name, last_name,user_name, email, password)
+INSERT INTO users (first_name, last_name,user_name, email, pw_digest)
 VALUES
 	('Jonathan', 'Torres','De_La_Kraken' 'yourOtaku@gmail.com', 'yourPassword'),
 	('Ufuoma', 'Gometi', 'Dr_Gometi', 'KPopOtaku@gmail.com', 'masterPassword'),
