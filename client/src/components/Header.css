@@ -1,14 +1,9 @@
+/* the main container for the header */
 .header{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    font-size: 1.5rem;
-    /* position: fixed;
-    background-color: rgb(255, 255, 255);
-    width: 100%;
-    top: 0%;
-    z-index: 10; */
-    
+    font-size: 1.5rem;   
 }
 
 /* logo */
@@ -17,6 +12,7 @@
     height: 100px;
 }
 
+/* links */
 .header__links{
     display: flex;
     flex-direction: row;
@@ -30,10 +26,12 @@
     padding: 1rem;
     position: relative;
 }
+
 .links--bar:hover{
     text-decoration: none;
 }
 
+/* hover effect */
 .links--bar:before{
     content: '';
     background:transparent;
@@ -43,7 +41,6 @@
     border: 2px solid transparent;
     height: 0;
     width: 0;
-    
 }
 .links--bar:hover:before{
     animation: go .3s linear forwards;
@@ -69,6 +66,126 @@
     padding: 2rem;   
 }
 
+/* search bar */
+.header__greet{
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* hamburger menu */
+
+label{
+    cursor: pointer;
+}
+
+/* .hamburger{
+    display: none;
+} */
+
+.hamburger__background{
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    /* background-color: red; */
+    top: 6.5rem;
+    right: 6.5rem;
+    background-image: radial-gradient(rgba(255, 0, 0, 0.959),rgba(255, 166, 0, 0.952));
+    transition: 1s all linear;
+    z-index: 100;
+    position: fixed;
+    /* transform: scale(80); */
+}
+
+/* toggle for the hamburger menu  */
+.hamburger{
+    display: none;
+}
+#toggle{
+    display: none;
+}
+
+.hamburger__checkbox:checked ~ .hamburger__background{
+    transform: scale(80);
+}
+.hamburger__checkbox:checked ~ .hamburger__nav{
+    opacity: 1;
+    width: 100%;
+}
+
+.hamburger__nav{
+    height: 100vh;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 300;
+    transform: all 1s;
+    opacity: 0;
+}
+
+.hamburger__button{
+    background-color: rgba(26, 47, 139, 0);
+    text-align: center;
+    height: 7rem;
+    width: 7rem;
+    position: fixed;
+    top: 6.5rem;
+    right: 6rem;
+    z-index: 1200;
+    background-color: #fff;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+
+.hamburger__list{
+    text-align: center;
+    position: relative;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%,-50%);
+}
+
+.yoo{
+    color: #fff;
+    font-size: 2rem;
+}
+
+.hamburger__icon{
+}
+
+@media screen and (max-width:660px){
+    .header__links{
+        display: none;
+    }
+
+    .hamburger{
+        display: block;
+    }
+
+    .hamburger__list li{
+        padding: 2rem;
+        color: rgba(255, 255, 255, 0.904);
+    }
+}
+
+
+
+
+
+
+
+
+/* animation for the links  */
 @keyframes go {
     0%{
         width: 0;

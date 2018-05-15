@@ -1,53 +1,17 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
-import jwtDecode from 'jwt-decode';
 
 import './Header.css';
 
-class Header extends Component {
-    constructor(props){
-        super(props)
+function Header() {
+    return (
+        <div>
         
-        this.state = {
-            currentUser: "Guest"
-        }
-    }
-    componentDidMount(){
-        let currentUser;
-        if (!localStorage.getItem('authToken')){
-            currentUser = "Guest";
-            this.setState({
-                currentUser: currentUser
-            })
-        }
-        else{
-            const token = localStorage.getItem('authToken');
-            const user = jwtDecode(token);
-            currentUser = user.username;
-            this.setState({
-                currentUser: currentUser
-            })
-        } 
-        
-    }
-
-    logOut(){
-        localStorage.setItem('authToken', '')
-    }
-
-    printToken() {
-
-        const token = localStorage.getItem('authToken');
-        const user = jwtDecode(token);
-        console.log('token', user)
-    }
-    render(){
-        return (
             <div className="header">
 
                 <div className="header__logo">
-                    <img src={require("./images/logoo.PNG")} className="header__img" />
+                    <img src={require("./images/logoo.PNG")} className="header__img"/>
                 </div>
 
                 <nav >
@@ -56,21 +20,31 @@ class Header extends Component {
                         <li><Link to="/register_login" className="links--bar">Register Login</Link></li>
                         <li><Link to="/library" className="links--bar">Library</Link></li>
                     </ul>
-                    <form action="/">
-                        <button onClick={this.logOut}>Logout</button>
-                    </form>
-                    
-                    
-                    <h3>{this.state.currentUser}</h3>
-                    <button onClick={this.printToken} type="button">check token</button>
-                    <p>Search</p>
-                    <SearchBar />
                 </nav>
-
             </div>
-        )
-    }
-    
+
+            <div className="hamburger">
+                
+                <label className="hamburger__button" for="toggle"> 
+                    <span className="hamburger__icon"> &nbsp; </span>
+                </label>
+                <input type="checkbox" className="hamburger__checkbox" id="toggle"/>
+                <div className="hamburger__background"> &nbsp;</div>
+                <nav className="hamburger__nav">
+                    <ul className="hamburger__list">
+                        <li><Link to="/" className="links--bar yoo ">Home</Link></li>
+                        <li><Link to="/register_login" className="links--bar yoo">Register Login</Link></li>
+                        <li><Link to="/library" className="links--bar yoo">Library</Link></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div className="header__greet">
+                <h3 className="greet--header">Welcome Guest</h3> 
+                <SearchBar />
+            </div>
+        </div>
+    )
 }
 
 export default Header;

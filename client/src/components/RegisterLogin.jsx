@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import Register from "./Register";
 import Login from "./Login";
+
 import Header from './Header';
 import jwtDecode from 'jwt-decode';
+import './RegisterLogin.css';
 
 class RegisterLogin extends Component {
     constructor(props) {
@@ -56,17 +58,20 @@ class RegisterLogin extends Component {
 
     render() {
         return (
+
             <div>
             <Header/>
-                <div>
+                
+            <div className="registerLogin">
+                <div className="registerLogin__register">
                     <Register registerPostRequest={this.registerPostRequest.bind(this)} />
                 </div>
-                <div>
+                <br/>
+            
+                <div className="registerLogin__login">
                     <Login registerPostRequest={this.registerPostRequest.bind(this)} />
                 </div>
-
-
-
+            </div>
             </div>
         )
     }

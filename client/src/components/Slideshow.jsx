@@ -10,21 +10,23 @@ function Slideshow() {
           <img  className="try" alt="900x500" src="https://dw9to29mmj727.cloudfront.net/misc/newsletter-naruto3.png" />
           <Carousel.Caption>
             <h3> Naruto Shippuden </h3>
-            <p> A young adult who posses the power of Kyubi goes soul searching</p>
+            <p> More than two years have passed since the most recent adventures in the Hidden Leaf Village, ample time for 
+            ninja wannabe Naruto Uzumaki to have developed skills worthy of recognition and respect. </p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img  alt="900x500" className="try" src="http://www.pngmart.com/files/4/Kaneki-Ken-PNG-Clipart.png" />
+          <img  alt="900x500" className="try" src="http://www.pngmart.com/files/4/Kaneki-Ken-PNG-Photos.png" />
           <Carousel.Caption>
-            <h3> Tokio Ghoul</h3>
-            <p> A university student gets bitten by a ghoul and the rest is ...</p>
+            <h3> Tokyo Ghoul</h3>
+            <p> Tokyo Ghoul is a Japanese dark fantasy manga series written and illustrated by Sui Ishida. It was serialized 
+            in Shueisha's seinen manga magazine Weekly Young Jump between September 2011 and September .</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img  alt="900x500" className="try" src="https://images4.alphacoders.com/906/906589.png" />
           <Carousel.Caption>
             <h3>Violet Evergarden</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            <p>Violet Evergarden is a Japanese light novel series written by Kana Akatsuki and illustrated by Akiko Takase.</p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

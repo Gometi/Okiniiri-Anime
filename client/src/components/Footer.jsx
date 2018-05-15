@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.css';
-
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faCode, faCoffee } from '@fortawesome/fontawesome-free-solid';
 
 function Footer() {
     return(
@@ -11,7 +12,10 @@ function Footer() {
             <div className="footer__subquotes">
                 <h5> Love anime | Live anime</h5>
             </div>
-          
+
+           
+            <FontAwesomeIcon icon={faCode} /> 
+            <FontAwesomeIcon icon={faCoffee} /> 
 
             <p className="footer__copyright"> A product of Team Akastuki &hearts; </p>
             

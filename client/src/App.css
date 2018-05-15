@@ -2,14 +2,11 @@ html{
   font-size: 62.5%;
 }
 .App {
-  padding: 0 1.5rem;
+  /* padding: 0 1.5rem; */
 
 }
 
 
 li{
   list-style: none;
-}
-#buttonClick{
-   display: none;
 }

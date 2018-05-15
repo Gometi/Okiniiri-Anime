@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import './Register.css';
+
+
 
 class Register extends Component {
     constructor(props) {
@@ -35,27 +38,29 @@ class Register extends Component {
 
     render() {
         return (
-            <div>
-                <form action="/" onSubmit={this.handleSubmit}>
+
+            <div className="register">
+                <form action="/" className="register__form" onSubmit={this.handleSubmit}>
                     <div>
-                        <label>Username:
-           <input type="text" onChange={this.handleInputChange} value={this.state.username} name="username" />
+                        <label className="register__label" >Username: 
+                            <br/>
+                            <input className="register__input" type="text" onChange={this.handleInputChange} value={this.state.username} name="username" />
                         </label>
                     </div>
                     <div>
-                        <label>Email:
-           <input type="email" onChange={this.handleInputChange} value={this.state.email} name="email" />
+                        <label className="register__label">Email:
+                            <br/>
+                            <input className="register__input" type="email" onChange={this.handleInputChange} value={this.state.email} name="email" />
                         </label>
                     </div>
                     <div>
-                        <label>Password:
-           <input type="password" onChange={this.handleInputChange} value={this.state.password} name="password" />
+                        <label className="register__label">Password:
+                            <br/>
+                            <input className="register__input" type="password" onChange={this.handleInputChange} value={this.state.password} name="password" />
                         </label>
                     </div>
-                    <button type="submit">Register</button>
+                    <button className="register__btn" type="submit">Register</button>
                 </form>
-                <div>
-                </div>
             </div>
         )
     }
