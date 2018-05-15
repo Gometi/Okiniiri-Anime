@@ -9,6 +9,7 @@ router.route('/')
 
 router.route('/user_review')
     .post(reviewsController.getReview, sendResponse.sendOkResp, sendResponse.sendErrResp)
+    .put(reviewsController.update, sendResponse.sendOkResp, sendResponse.sendErrResp)
 
 
 

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import './AnimeDetails.css';
 import Header from './Header';
+import UserReview from './UserReview';
 import { Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import jwtDecode from 'jwt-decode';
@@ -119,25 +120,25 @@ class AnimeDetails extends Component {
     }
 
    fetchUserReview(){
-     let data = {
-         anime_name: this.state.name,
-         user_id: this.getUser().id
-     }
+    //  let data = {
+    //      anime_name: this.state.name,
+    //      user_id: this.getUser().id
+    //  }
 
 
-       const options = {
-           method: "POST",
-           headers: {
-               "Content-Type": "application/json"
-           },
-           body: JSON.stringify(data)
-       }
-       fetch('/reviews/user_review', options)
-           .then(resp => {
-               if (!resp.ok) throw new Error(resp.statusMessage);
-               return resp.json();
-           })
-           .then(response => console.log(response));
+    //    const options = {
+    //        method: "POST",
+    //        headers: {
+    //            "Content-Type": "application/json"
+    //        },
+    //        body: JSON.stringify(data)
+    //    }
+    //    fetch('/reviews/user_review', options)
+    //        .then(resp => {
+    //            if (!resp.ok) throw new Error(resp.statusMessage);
+    //            return resp.json();
+    //        })
+    //        .then(response => console.log(response));
    }
 
 
@@ -281,14 +282,17 @@ class AnimeDetails extends Component {
 
                     </div>
                     <div>
-                        <h3>User Review</h3>
+
+                     <UserReview id={this.props.id} anime_name={this.state.anime_name}/>
+
+                        {/* <h3>User Review</h3>
                         <form>
                             <textarea name="review" value={this.state.review} onChange={this.handleInputChange}></textarea>
                             <div>
                                 <button onClick={this.save}>Save</button>
                             </div>
                             
-                        </form>
+                        </form> */}
 
                     </div>
                 </div>
