@@ -1,7 +1,7 @@
 const animeDb = require('../config/connection');
 
-function getAll() {
-    return animeDb.any('SELECT * FROM library');
+function getAll(id) {
+    return animeDb.any(`SELECT * FROM library WHERE user_id = $1`, id );
 }
 
 // getting one 
@@ -15,8 +15,8 @@ function getOne(id) {
 // creating or saving one 
 function create(anime) {
     return qp = animeDb.one(`
-       INSERT INTO library (anime_id, anime_name)
-        VALUES ($/anime_id/, $/anime_name/)
+       INSERT INTO library (anime_id, anime_name, user_id)
+        VALUES ($/anime_id/, $/anime_name/, $/user_id/)
         RETURNING *
        `, anime);
 }

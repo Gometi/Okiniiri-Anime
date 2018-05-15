@@ -6,7 +6,7 @@ class Anime extends Component{
     constructor(props){
         super(props)
         this.name = this.props.name;
-        this.name = this.name.replace(" ", "%20");
+        // this.name = this.name.replace(" ", "%20");
        this.state = {
            id: "",
            name: "",

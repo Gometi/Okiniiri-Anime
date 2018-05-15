@@ -20,7 +20,8 @@ class App extends Component {
   addToLibrary(anime) {
     const data = {
       anime_id: anime.id,
-      anime_name: anime.name
+      anime_name: anime.name,
+      user_id: anime.user_id
     }
 
     const animeData = JSON.stringify(data);
@@ -42,7 +43,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <Header />
       <Switch>
           <Route path='/anime_details/:id' component={(props)=>(<AnimeDetails 
            id = {props.match.params.id} addToLibrary = {this.addToLibrary.bind(this)}

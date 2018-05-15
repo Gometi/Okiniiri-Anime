@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
 import Anime from "./Anime";
+import Header from './Header';
+import jwtDecode from 'jwt-decode';
 
 class Library extends Component{
    constructor(props){
@@ -13,9 +15,17 @@ class Library extends Component{
        this.removeAnimes = this.removeAnimes.bind(this)
        
    }
+    getUser() {
+        let user = "";
+        if (localStorage.getItem('authToken')) {
+            user = jwtDecode(localStorage.getItem('authToken'));
+            return user;
+        }
+    }
 
    fetchAnimes(){
-       fetch('/animes')
+       let user_id = this.getUser().id;
+       fetch(`/animes/${user_id}`)
            .then(resp => {
                if (!resp.ok) throw new Error(resp.statusMessage);
                return resp.json();
@@ -46,6 +56,7 @@ class Library extends Component{
    render(){
        return(
            <div>
+           <Header/>
               <h1>Library</h1>
                {this.state.animeList.map((anime, index) => (
                    <div key={index}>

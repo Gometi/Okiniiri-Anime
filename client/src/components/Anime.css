@@ -5,11 +5,10 @@
   background-color: rgba(192, 189, 189, 0.205);
   text-align: center;
   font-family: 'Khula', sans-serif;
-  /* display: inline-flex;
-  flex-direction: column; */
   margin: 2rem;
   box-shadow: -1px 3px 27px 1px rgba(0,0,0,0.75);
   transition: .3s all linear;
+
 }
 .anime:hover{
   box-shadow: -1px 3px 27px -2px rgba(0,0,0,0.75);
@@ -31,7 +30,14 @@
 }
 
 .anime__list{
+
   display: inline-flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 660px) {
+  .anime__list{
+    display: flex;
+    justify-content: center;
+  }
 }

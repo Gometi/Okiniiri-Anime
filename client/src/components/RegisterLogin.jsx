@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import Register from "./Register";
 import Login from "./Login";
 
+import Header from './Header';
+import jwtDecode from 'jwt-decode';
+import './RegisterLogin.css';
+
 class RegisterLogin extends Component {
     constructor(props) {
         super(props)
@@ -21,9 +25,17 @@ class RegisterLogin extends Component {
         });
     }
 
+ 
 
+ saveToken(respBody) {
+     console.log("token", respBody)
+    localStorage.setItem('authToken', respBody.token)
+    const user = jwtDecode(respBody.token);
+    return user;
+}
 
-    handlePostData(data) {
+    handlePostData(url, data) {
+       
         const userData = JSON.stringify(data);
         const options = {
             method: "POST",
@@ -32,31 +44,34 @@ class RegisterLogin extends Component {
             },
             body: userData
         }
-        fetch('/register', options)
+        fetch(url, options)
             .then(resp => {
                 if (!resp.ok) throw new Error(resp.statusMessage);
                 return resp.json();
             })
-            .then(data => (data) ? console.log('register/login success') : console.log('register/login failure'))
+            .then(this.saveToken)
     }
 
     registerPostRequest(data){
-        const url = data.url;
-        this.handlePostData(data.post);
+        this.handlePostData(data.url, data.post);
     }
 
     render() {
         return (
+
             <div>
-                <div>
+            <Header/>
+                
+            <div className="registerLogin">
+                <div className="registerLogin__register">
                     <Register registerPostRequest={this.registerPostRequest.bind(this)} />
                 </div>
-                <div>
+                <br/>
+            
+                <div className="registerLogin__login">
                     <Login registerPostRequest={this.registerPostRequest.bind(this)} />
                 </div>
-
-
-
+            </div>
             </div>
         )
     }

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-
 import { Link } from "react-router-dom";
+import './SearchBar.css';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faCoffee, faSearch } from '@fortawesome/fontawesome-free-solid';
 
 class SearchBar extends Component{
     constructor(props){
@@ -22,7 +24,7 @@ class SearchBar extends Component{
     }
 
     enterKeyPressed(){
-        const input = document.getElementById('search');
+        const input = document.getElementById('form__input');
         input.addEventListener("keyup", function(e) {
             e.preventDefault();
             if(e.keyCode === 13){
@@ -37,11 +39,14 @@ class SearchBar extends Component{
 
     render(){
         return(
-            <div>
+            <div className="form">
                 <form action={this.url + this.state.anime}>
-            <input id="search" type="text" name="anime" value={this.state.anime} onChange={this.handleInputChange} />
-            <button id="buttonClick"onClick={this.handleSubmit} type="buttom">Search</button>
-            </form>
+
+                    <input id="form__input" type="text" name="anime" value={this.state.anime} onChange={this.handleInputChange} />
+                    <button id="buttonClick" onClick={this.handleSubmit} type="buttom"> <FontAwesomeIcon icon={faSearch} /> </button>
+                </form>
+
+                
             </div>
         )
     }

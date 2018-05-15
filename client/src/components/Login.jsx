@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 
+import jwtDecode from 'jwt-decode';
+import {Link} from 'react-router-dom';
+import './Login.css';
+
 class Login extends Component {
     constructor(props) {
         super(props)
@@ -14,15 +18,21 @@ class Login extends Component {
 
     handleInputChange(e) {
         const { name, value } = e.target;
-        this.userData = {
-            url: '/login',
-            post: this.state
-        }
         this.setState({
             [name]: value
         });
+        this.userData = {
+            url: '/api/login',
+            post: this.state
+        }
+        
     }
-
+    printToken(){
+        
+        const token = localStorage.getItem('authToken');
+        const user = jwtDecode(token);
+        console.log('token', user)
+    }
     handleSubmit(e) {
         e.preventDefault();
         this.props.registerPostRequest(this.userData);
@@ -30,23 +40,24 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    
+
+            <div className="login">
+                <form action="/" className="login__form" onSubmit={this.handleSubmit}>
                     <div>
-                        <label>Email:
-           <input type="email" onChange={this.handleInputChange} value={this.state.email} name="email" />
+                        <label className="login__label">Email:
+                            <br/>
+                            <input className="login__input" type="email" onChange={this.handleInputChange} value={this.state.email} name="email" />
                         </label>
                     </div>
                     <div>
-                        <label>Password:
-           <input type="password" onChange={this.handleInputChange} value={this.state.password} name="password" />
+                        <label className="login__label">Password:
+                            <br/>
+                            <input className="login__input" type="password" onChange={this.handleInputChange} value={this.state.password} name="password" />
                         </label>
                     </div>
-                    <button type="submit">Login</button>
+
+                    <button className="login__btn" type="submit">Login</button>
                 </form>
-                <div>
-                </div>
             </div>
         )
     }

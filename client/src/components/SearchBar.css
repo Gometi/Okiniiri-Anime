@@ -1,0 +1,24 @@
+#form__input{
+    padding: 1rem;
+    border: 2px solid rgba(61, 229, 252, 0.884);
+    width: 50%;
+    margin-bottom: 2rem;
+    transition: .3s all linear;
+}
+
+#form__input:hover {
+    border: 2px solid rgba(157, 38, 255, 0.884); 
+}
+
+#form__input:hover + #buttonClick {
+    border: 2px solid rgba(157, 38, 255, 0.884);
+    background-color: rgba(157, 38, 255, 0.884);
+}
+
+#buttonClick{
+    transition: .3s all linear;
+    padding: 1rem 2rem 1rem 2rem;
+    background-color:rgba(61, 229, 252, 0.884);
+    border: 2px solid rgba(61, 229, 252, 0.884);
+    color: rgba(240, 248, 255, 0.938);
+}

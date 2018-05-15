@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 
+import Header from './Header';
+import './SearchResult.css';
+
+
 class SearchResults extends Component{
     constructor(props){
         super(props)
@@ -39,15 +43,21 @@ class SearchResults extends Component{
     render(){
         return(
             <div>
-                <h2>Search Results:</h2>
-                {this.state.animeList.map(anime => (
-                    <div key={anime.id}>
-                        <Link to={this.link + anime.id}> 
-                        <h3>{anime.attributes.titles.en_jp}</h3>
-                            <img src={anime.attributes.posterImage.tiny} alt=""/>
-                        </Link>
-                    </div>
-                ))}
+            <Header/>
+                
+            <div className="searchResult">
+                <h2 className="searchResult__header">Search Results:</h2>
+                <div >
+                    {this.state.animeList.map(anime => (
+                        <div className="searchResult__container" key={anime.id}>
+                            <Link to={this.link + anime.id}> 
+                            <h3 className="searchResult__title">{anime.attributes.titles.en_jp}</h3>
+                                <img className="searchResult__img" src={anime.attributes.posterImage.tiny} alt="img"/>
+                            </Link>
+                        </div>
+                    ))}
+                </div>
+            </div>
             </div>
         )
     }

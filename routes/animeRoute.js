@@ -7,6 +7,7 @@ router.route('/')
     .post(animeController.create, sendResponse.sendOkResp, sendResponse.sendErrResp)
 
     router.route('/:id')
+        .get(animeController.getAll, sendResponse.sendOkResp, sendResponse.sendErrResp)
         .delete(animeController.destroy, sendResponse.sendOkResp, sendResponse.sendErrResp)
 
 
