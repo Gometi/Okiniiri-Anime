@@ -47,6 +47,7 @@ function login(req, res, next) {
             message: 'Invalid credentails'
         }))
         .then(data => tokenService.makeToken({
+            id: data.id,
             email: data.email,
             username: data.username
         }))

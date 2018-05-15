@@ -31,15 +31,14 @@ function getEmail(email) {
 function login(userData) {
     console.log(userData.email)
     return getEmail(userData.email)
-    .then(user =>{
-        console.log('hashing', user)
+    .then(user =>
         bcrypt.compare(userData.password, user.pw_digest)
         .then(match => {
             if (!match) throw new Error('UserData does not match');
             delete user.pw_digest;
             return user;
         })
-    })
+    )
 }
 
 

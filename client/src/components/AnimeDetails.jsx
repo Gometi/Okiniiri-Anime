@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import './AnimeDetails.css';
 import Header from './Header';
 import { Button } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 class AnimeDetails extends Component {
     constructor(props) {
@@ -21,6 +22,12 @@ class AnimeDetails extends Component {
             rating: "",
             trailer: "",
             anime: "Not Added To Library",
+            streamingLink1: "",
+            streamingLink2: "",
+            streamingLink3: "",
+            streamer1: "",
+            streamer2: "",
+            streamer3: "",
             show: false
 
         }
@@ -40,9 +47,6 @@ class AnimeDetails extends Component {
                 }
                 return resp.json();
             }).then(anime => {
-                console.log(anime);
-                console.log(anime.data[0].attributes.titles.en_jp)
-
                 this.setState({
                     id: anime.data[0].id,
                     name: anime.data[0].attributes.titles.en_jp,
@@ -56,10 +60,52 @@ class AnimeDetails extends Component {
                     rating: anime.data[0].attributes.ageRatingGuide,
                     trailer: anime.data[0].attributes.youtubeVideoId
                 })
+
+                this.fetchStreamingLinks();
             })
             .catch(err => console.log(`There is an error: ${err}`));
 
     }
+
+    fetchStreamingLinks(){
+        fetch(`https://kitsu.io/api/edge/anime/${this.state.id}/streaming-links`
+
+        )
+            .then(resp => {
+                if (!resp.ok) {
+                    throw Error('oops: ', resp.message);
+                }
+                return resp.json();
+            }).then(link => {
+                this.setState({
+                    streamingLink1: link.data[0].attributes.url,
+                    streamingLink2: link.data[1].attributes.url,
+                    streamingLink3: link.data[2].attributes.url
+
+                })
+                this.fetchStreamer('streamer1', link.data[0].relationships.streamer.links.related);
+                this.fetchStreamer('streamer2', link.data[1].relationships.streamer.links.related);
+                this.fetchStreamer('streamer3', link.data[2].relationships.streamer.links.related);
+            })
+            .catch(err => console.log(`There is an error: ${err}`));
+    }
+
+    fetchStreamer(streamer,url){
+        fetch(url)
+            .then(resp => {
+                if (!resp.ok) {
+                    throw Error('oops: ', resp.message);
+                }
+                return resp.json();
+            }).then(link => {
+                this.setState({
+                    [streamer]: link.data.attributes.siteName
+                })
+            })
+            .catch(err => console.log(`There is an error: ${err}`));
+    }
+
+   
 
     componentDidMount() {
         this.fetchAnime();
@@ -124,6 +170,8 @@ class AnimeDetails extends Component {
                         <p>Status: {this.state.status}</p>
                         <p>Rating: {this.state.rating}</p>
                         <button onClick={this.display} className="details--watch"> Watch trailer  </button>
+                        
+                        
                     </div>
                  </div>
         
@@ -149,7 +197,19 @@ class AnimeDetails extends Component {
                 
                 </div>
                     
-                    
+                    <div>
+                        <h3>Streaming Links</h3>
+                        <div>
+                            <a href={this.state.streamingLink1}><h4>{this.state.streamer1}</h4></a>
+                        </div>
+                        <div>
+                            <a href={this.state.streamingLink2}><h4>{this.state.streamer2}</h4></a>
+                        </div>
+                        <div>
+                            <a href={this.state.streamingLink3}><h4>{this.state.streamer3}</h4></a>
+                        </div>
+                        
+                    </div>
                 </div>
             </div>
         )

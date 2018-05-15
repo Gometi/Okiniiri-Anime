@@ -33,23 +33,7 @@ class RegisterLogin extends Component {
 }
 
     handlePostData(url, data) {
-        // const userData = JSON.stringify(data);
-        // const options = {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: userData
-        // }
-        // fetch(url, options)
-        //     .then(resp => {
-        //         if (!resp.ok) throw new Error(resp.statusMessage);
-        //         return resp.json();
-        //     })
-        //     .then(data => (data) ? console.log('register/login success') : console.log('register/login failure'))
-
-
-
+       
         const userData = JSON.stringify(data);
         const options = {
             method: "POST",
