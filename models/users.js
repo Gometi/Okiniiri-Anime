@@ -21,6 +21,7 @@ function register(userData) {
 }
 
 function getEmail(email) {
+    console.log('checking table',email)
     return db.one(`
     SELECT * FROM users
     WHERE email = $1
@@ -28,8 +29,10 @@ function getEmail(email) {
 }
 
 function login(userData) {
+    console.log(userData.email)
     return getEmail(userData.email)
     .then(user =>{
+        console.log('hashing', user)
         bcrypt.compare(userData.password, user.pw_digest)
         .then(match => {
             if (!match) throw new Error('UserData does not match');

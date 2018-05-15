@@ -40,7 +40,7 @@ class SearchBar extends Component{
             <div>
                 <form action={this.url + this.state.anime}>
             <input id="search" type="text" name="anime" value={this.state.anime} onChange={this.handleInputChange} />
-            <button id="buttonClick"onClick={this.handleSubmit} type="buttom">Search</button>
+            <button id="buttonClick"  type="buttom">Search</button>
             </form>
             </div>
         )

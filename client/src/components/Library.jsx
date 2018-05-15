@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Anime from "./Anime";
+import Header from './Header';
 
 class Library extends Component{
    constructor(props){
@@ -46,6 +47,7 @@ class Library extends Component{
    render(){
        return(
            <div>
+           <Header/>
               <h1>Library</h1>
                {this.state.animeList.map((anime, index) => (
                    <div key={index}>

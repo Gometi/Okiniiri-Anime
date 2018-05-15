@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Register from "./Register";
 import Login from "./Login";
+import Header from './Header';
+import jwtDecode from 'jwt-decode';
 
 class RegisterLogin extends Component {
     constructor(props) {
@@ -21,9 +23,33 @@ class RegisterLogin extends Component {
         });
     }
 
+ 
+
+ saveToken(respBody) {
+     console.log("token", respBody)
+    localStorage.setItem('authToken', respBody.token)
+    const user = jwtDecode(respBody.token);
+    return user;
+}
+
+    handlePostData(url, data) {
+        // const userData = JSON.stringify(data);
+        // const options = {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     },
+        //     body: userData
+        // }
+        // fetch(url, options)
+        //     .then(resp => {
+        //         if (!resp.ok) throw new Error(resp.statusMessage);
+        //         return resp.json();
+        //     })
+        //     .then(data => (data) ? console.log('register/login success') : console.log('register/login failure'))
 
 
-    handlePostData(data) {
+
         const userData = JSON.stringify(data);
         const options = {
             method: "POST",
@@ -32,22 +58,22 @@ class RegisterLogin extends Component {
             },
             body: userData
         }
-        fetch('/register', options)
+        fetch(url, options)
             .then(resp => {
                 if (!resp.ok) throw new Error(resp.statusMessage);
                 return resp.json();
             })
-            .then(data => (data) ? console.log('register/login success') : console.log('register/login failure'))
+            .then(this.saveToken)
     }
 
     registerPostRequest(data){
-        const url = data.url;
-        this.handlePostData(data.post);
+        this.handlePostData(data.url, data.post);
     }
 
     render() {
         return (
             <div>
+            <Header/>
                 <div>
                     <Register registerPostRequest={this.registerPostRequest.bind(this)} />
                 </div>

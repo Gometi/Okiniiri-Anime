@@ -16,14 +16,16 @@ class Register extends Component {
     }
 
     handleInputChange(e) {
+        
         const { name, value } = e.target;
-         this.userData = {
-              url: '/register',
-              post: this.state
-        }
         this.setState({
             [name]: value
         });
+         this.userData = {
+              url: '/api/register',
+              post: this.state
+        }
+        
     }
 
     handleSubmit(e) {
@@ -34,7 +36,7 @@ class Register extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form action="/" onSubmit={this.handleSubmit}>
                     <div>
                         <label>Username:
            <input type="text" onChange={this.handleInputChange} value={this.state.username} name="username" />

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-
+import Header from './Header';
 class SearchResults extends Component{
     constructor(props){
         super(props)
@@ -39,6 +39,7 @@ class SearchResults extends Component{
     render(){
         return(
             <div>
+            <Header/>
                 <h2>Search Results:</h2>
                 {this.state.animeList.map(anime => (
                     <div key={anime.id}>

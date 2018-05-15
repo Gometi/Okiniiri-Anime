@@ -11,9 +11,7 @@ function Footer() {
             <div className="footer__subquotes">
                 <h5> Love anime | Live anime</h5>
             </div>
-           
-            <i className="fab fa-instagram fa-3x"></i>
-            <i class="fab fa-youtube-square fa-3x"></i>
+          
 
             <p className="footer__copyright"> A product of Team Akastuki &hearts; </p>
             

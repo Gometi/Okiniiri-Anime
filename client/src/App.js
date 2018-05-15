@@ -42,7 +42,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <Header />
       <Switch>
           <Route path='/anime_details/:id' component={(props)=>(<AnimeDetails 
            id = {props.match.params.id} addToLibrary = {this.addToLibrary.bind(this)}

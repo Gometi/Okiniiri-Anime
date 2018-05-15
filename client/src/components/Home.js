@@ -3,6 +3,7 @@ import Anime from './Anime';
 import Slideshow from "./Slideshow";
 import './Anime.css';
 import './Home.css';
+import Header from './Header';
 
 // import Video from './Video';
 // import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -25,6 +26,7 @@ function Animes(props) {
 
     return (
         <div>
+        <Header/>
             <div className="home__header"> 
                 <div className="header--img">
 

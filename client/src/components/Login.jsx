@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import jwtDecode from 'jwt-decode';
 class Login extends Component {
     constructor(props) {
         super(props)
@@ -14,15 +14,21 @@ class Login extends Component {
 
     handleInputChange(e) {
         const { name, value } = e.target;
-        this.userData = {
-            url: '/login',
-            post: this.state
-        }
         this.setState({
             [name]: value
         });
+        this.userData = {
+            url: '/api/login',
+            post: this.state
+        }
+        
     }
-
+    printToken(){
+        
+        const token = localStorage.getItem('authToken');
+        const user = jwtDecode(token);
+        console.log('token', user)
+    }
     handleSubmit(e) {
         e.preventDefault();
         this.props.registerPostRequest(this.userData);
@@ -31,7 +37,7 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form action="/" onSubmit={this.handleSubmit}>
                     
                     <div>
                         <label>Email:
@@ -44,6 +50,7 @@ class Login extends Component {
                         </label>
                     </div>
                     <button type="submit">Login</button>
+                    <button onClick={this.printToken} type="button">check token</button>
                 </form>
                 <div>
                 </div>

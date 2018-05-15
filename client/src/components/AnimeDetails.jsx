@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import './AnimeDetails.css';
+import Header from './Header';
 import { Button } from 'react-bootstrap';
 
 class AnimeDetails extends Component {
@@ -99,6 +100,7 @@ class AnimeDetails extends Component {
     render() {
         return (
             <div className="details">
+            <Header/>
                 <div className="details__header">
                     <img className="details--img" src={this.state.coverImage} />
                     <h2 className="details--head">{this.state.name}</h2>
