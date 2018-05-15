@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.css';
-
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faCode, faCoffee } from '@fortawesome/fontawesome-free-solid';
 
 function Footer() {
     return(
@@ -12,8 +13,8 @@ function Footer() {
                 <h5> Love anime | Live anime</h5>
             </div>
            
-            <i className="fab fa-instagram fa-3x"></i>
-            <i class="fab fa-youtube-square fa-3x"></i>
+            <FontAwesomeIcon icon={faCode} /> 
+            <FontAwesomeIcon icon={faCoffee} /> 
 
             <p className="footer__copyright"> A product of Team Akastuki &hearts; </p>
             

@@ -25,27 +25,26 @@ function Animes(props) {
 
     return (
         <div>
+            <Slideshow/>
+
             <div className="home__header"> 
                 <div className="header--img">
-
                 </div>
                 <div className="header--title">
                     <h1 className="title--main"> Okiniiri Anime </h1>
                     <p className="title--content">
-                    Anime that will capture your heart!
+                        Your home for Anime
                     </p>
-                    <button className="title--btn" > Join </button>
                 </div>
             </div>
-           <Slideshow/>
+           
+           <div className="animeList__container">
             {animeList.map((anime, index) => (
                 <div className="anime__list" key={index}>
                     <Anime name={anime} />
                 </div>
             ))}
-
-            
-
+            </div>
         </div>
     )
 

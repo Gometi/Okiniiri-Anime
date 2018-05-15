@@ -6,29 +6,32 @@
     text-align: center;
     font-size: 300%;
     position: relative;
+    margin-top: 3rem;
 }
 
 /* image container */
 .header--img{
-    height: 70vh;
+    height: 40vh;
     width: 100%;
     margin: 0 auto 2rem auto;
     background-image: linear-gradient(
         to right bottom,
-         rgba(52, 228, 234, 0.897),
-         rgba(153, 74, 218, 0.911)),
-          url("./images/slide_1.jpg");
+         rgba(52, 228, 234, 0.637),
+         rgba(153, 74, 218, 0.651)),
+          url("./images/parallax.png");
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: 0px 10px 48px 2px rgba(0,0,0,0.75);
+    box-shadow: 1px 2px 31px 6px rgba(0,0,0,0.75);
+    background-attachment: fixed;
 }
 
 /* title div */
 .header--title{
     position: absolute;
-    top: 30%;
-    left: 30%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: white;
     font-family: 'Bellefair', serif;
 }
@@ -44,6 +47,4 @@
     color: rgba(244, 248, 252, 0.918);
     padding: 1.5rem 2rem 1.5rem 2rem;
     font-size: 2rem;
-
 }
-

@@ -1,0 +1,42 @@
+/* the main container */
+.register{
+    height: 40rem;
+    width: 35vw;
+    border: 2px solid rgba(11, 236, 206, 0.918);
+    text-align: center;
+    margin: 2rem 2rem;
+}
+
+/* input box */
+.register__input{
+    width: 30vw;
+    padding: .5rem;
+    border: 2px solid rgba(11, 236, 206, 0.918);
+}
+
+.register__form{
+    transform: translate(0, 35%);
+}
+
+.register__label{
+    text-align: left;
+    color: rgba(0, 0, 0, 0.76);
+}
+
+/* button */
+.register__btn{
+    background-color: rgba(11, 236, 206, 0.918);
+    padding: 1rem;
+    width: 40%;
+    color: rgba(240, 248, 255, 0.918);
+}
+
+@media screen and (max-width:660px) {
+    .register{
+        width: 28rem;
+        margin: 2rem auto;
+    }
+    .register__input{
+        width: 25rem;
+    }
+}

@@ -1,0 +1,29 @@
+.registerLogin{
+    display: flex;
+    width: 80vw;
+    margin: 0 auto;
+}
+
+.registerLogin__register{
+    flex: 2;
+}
+
+.registerLogin__login{
+    flex:2;
+}
+
+@media screen and (max-width:660px){
+    .registerLogin{
+        flex-direction: column;
+        width: 30rem;
+        margin: 0 auto;
+
+    }
+    .registerLogin__register{
+        flex: 1;
+    }
+    
+    .registerLogin__login{
+        flex:1;
+    }
+}

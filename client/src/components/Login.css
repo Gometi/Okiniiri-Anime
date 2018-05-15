@@ -1,0 +1,42 @@
+/* the main container */
+.login{
+    height: 40rem;
+    width: 35vw;
+    border: 2px solid rgba(108, 11, 236, 0.863);
+    text-align: center;
+    margin: 2rem 2rem;
+}
+
+/* input box */
+.login__input{
+    width: 30vw;
+    padding: .5rem;
+    border: 2px solid rgba(108, 11, 236, 0.863);
+}
+
+.login__form{
+    transform: translate(0, 35%);
+}
+
+.login__label{
+    text-align: left;
+    color: rgba(0, 0, 0, 0.76);
+}
+
+/* button */
+.login__btn{
+    background-color: rgba(108, 11, 236, 0.863);
+    padding: 1rem;
+    width: 40%;
+    color: rgba(240, 248, 255, 0.918);
+}
+
+@media screen and (max-width:660px) {
+    .login{
+        width: 28rem;
+        margin: 2rem auto;
+    }
+    .login__input{
+        width: 25rem;
+    }
+}

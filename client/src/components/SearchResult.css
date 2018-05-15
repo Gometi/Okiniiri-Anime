@@ -1,0 +1,42 @@
+.searchResult{
+    width: 70vw;
+    margin: 0 auto;
+    text-align: center;
+    min-height: 100%;
+}
+
+.searchResult__container{
+    background-color: rgba(218, 214, 214, 0.877);
+    margin: 3rem;
+    box-shadow: 1px 0px 22px 2px rgba(0,0,0,0.75);
+}
+
+.searchResult__title{
+    background-color: rgba(22, 21, 22, 0.63);
+    padding: 2rem;
+    color: rgba(240, 248, 255, 0.952);
+    transition: all 1s ease-in-out;
+    
+}
+.searchResult__title:hover > .searchResult__img{
+    display: block;
+    opacity: 1;
+}
+
+.searchResult__img{
+    display: none;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+
+/* anchor tags */
+a, a:hover{
+    text-decoration: none;
+}
+
+/* media queries */
+@media screen and (max-width:660px) {
+    .searchResult__title{
+        font-size: 1.5rem;
+    }
+}
