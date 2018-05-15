@@ -1,7 +1,8 @@
 const animeDb = require('../models/anime');
 
 function getAll(req, res, next) {
-    animeDb.getAll()
+	console.log(req.params.id,'controller')
+    animeDb.getAll(req.params.id)
         .then(data => {
             res.locals.animes = data;
             next();

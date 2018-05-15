@@ -3,6 +3,7 @@ import './AnimeDetails.css';
 import Header from './Header';
 import { Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import jwtDecode from 'jwt-decode';
 
 class AnimeDetails extends Component {
     constructor(props) {
@@ -105,6 +106,14 @@ class AnimeDetails extends Component {
             .catch(err => console.log(`There is an error: ${err}`));
     }
 
+    getUser(){
+        let user = "";
+        if (localStorage.getItem('authToken')){
+            user = jwtDecode(localStorage.getItem('authToken')); 
+            return user;
+        }
+    }
+
    
 
     componentDidMount() {
@@ -112,10 +121,11 @@ class AnimeDetails extends Component {
     }
 
     addToLibrary() {
-
+        
         const anime = {
             id: this.state.id,
-            name: this.state.name
+            name: this.state.name,
+            user_id: this.getUser().id
         }
         this.props.addToLibrary(anime);
         this.setState({

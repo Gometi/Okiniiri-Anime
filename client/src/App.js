@@ -20,7 +20,8 @@ class App extends Component {
   addToLibrary(anime) {
     const data = {
       anime_id: anime.id,
-      anime_name: anime.name
+      anime_name: anime.name,
+      user_id: anime.user_id
     }
 
     const animeData = JSON.stringify(data);
