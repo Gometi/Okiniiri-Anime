@@ -58,6 +58,7 @@ class Header extends Component {
                             <li><Link to="/" className="links--bar">Home</Link></li>
                             <li><Link to="/register_login" className="links--bar">Register Login</Link></li>
                             <li><Link to="/library" className="links--bar">Library</Link></li>
+                            <li onClick={this.logOut}><Link to="/" className="links--bar">Logout</Link></li>
                         </ul>
                     </nav>
                 </div>
