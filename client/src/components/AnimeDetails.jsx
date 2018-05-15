@@ -29,12 +29,15 @@ class AnimeDetails extends Component {
             streamer1: "",
             streamer2: "",
             streamer3: "",
+            review: "",
             show: false
 
         }
         this.link = "https://www.youtube.com/embed/";
         this.addToLibrary = this.addToLibrary.bind(this);
         this.removeFromLibrary = this.removeFromLibrary.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.save = this.save.bind(this);
         this.display = this.display.bind(this);
     }
 
@@ -63,12 +66,13 @@ class AnimeDetails extends Component {
                 })
 
                 this.fetchStreamingLinks();
+                this.fetchUserReview();
             })
             .catch(err => console.log(`There is an error: ${err}`));
 
     }
 
-    fetchStreamingLinks(){
+    fetchStreamingLinks() {
         fetch(`https://kitsu.io/api/edge/anime/${this.state.id}/streaming-links`
 
         )
@@ -91,7 +95,7 @@ class AnimeDetails extends Component {
             .catch(err => console.log(`There is an error: ${err}`));
     }
 
-    fetchStreamer(streamer,url){
+    fetchStreamer(streamer, url) {
         fetch(url)
             .then(resp => {
                 if (!resp.ok) {
@@ -106,22 +110,43 @@ class AnimeDetails extends Component {
             .catch(err => console.log(`There is an error: ${err}`));
     }
 
-    getUser(){
+    getUser() {
         let user = "";
-        if (localStorage.getItem('authToken')){
-            user = jwtDecode(localStorage.getItem('authToken')); 
+        if (localStorage.getItem('authToken')) {
+            user = jwtDecode(localStorage.getItem('authToken'));
             return user;
         }
     }
 
-   
+   fetchUserReview(){
+     let data = {
+         anime_name: this.state.name,
+         user_id: this.getUser().id
+     }
+
+
+       const options = {
+           method: "POST",
+           headers: {
+               "Content-Type": "application/json"
+           },
+           body: JSON.stringify(data)
+       }
+       fetch('/reviews/user_review', options)
+           .then(resp => {
+               if (!resp.ok) throw new Error(resp.statusMessage);
+               return resp.json();
+           })
+           .then(response => console.log(response));
+   }
+
 
     componentDidMount() {
         this.fetchAnime();
     }
 
     addToLibrary() {
-        
+
         const anime = {
             id: this.state.id,
             name: this.state.name,
@@ -131,10 +156,10 @@ class AnimeDetails extends Component {
         this.setState({
             anime: "Added To Library"
         })
-        
+
     }
 
-    removeFromLibrary(){
+    removeFromLibrary() {
         const options = {
             method: "DELETE"
         }
@@ -146,8 +171,43 @@ class AnimeDetails extends Component {
             .then(console.log('deleted'))
     }
 
+    handleInputChange(e) {
+        const { name, value } = e.target;
+        this.setState({
+            [name]: value
+        });
+    }
+
+    createReview(){
+        let reviewData = {
+            review: this.state.review,
+            anime_name: this.state.name,
+            user_name: this.getUser().username,
+            user_id: this.getUser().id
+        }
+        
+        const options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(reviewData)
+        }
+        fetch('/reviews', options)
+            .then(resp => {
+                if (!resp.ok) throw new Error(resp.statusMessage);
+                return resp.json();
+            })
+            .then(response => console.log(response));
+    }
+
+    save(e) {
+        e.preventDefault();
+        this.createReview();
+    }
+
     // toggle the trailer
-    display(){
+    display() {
         this.setState({
             show: !this.state.show
         })
@@ -156,20 +216,20 @@ class AnimeDetails extends Component {
     render() {
         return (
             <div className="details">
-            <Header/>
+                <Header />
                 <div className="details__header">
                     <img className="details--img" src={this.state.coverImage} />
                     <h2 className="details--head">{this.state.name}</h2>
                     <div className="details--overlay"></div>
                 </div>
-        
-                
+
+
 
                 <div className="details__info">
                     <div className="info--syn">
                         <p>{this.state.synopsis}</p>
                     </div>
-                    
+
                     <div className="info--list">
                         <img className="details__pic" src={this.state.posterImage} />
                         <h3 className="list--head">Anime Details</h3>
@@ -180,33 +240,33 @@ class AnimeDetails extends Component {
                         <p>Status: {this.state.status}</p>
                         <p>Rating: {this.state.rating}</p>
                         <button onClick={this.display} className="details--watch"> Watch trailer  </button>
-                        
-                        
+
+
                     </div>
-                 </div>
-        
-                <div>
-                    
-                <div className="details--video">
-                    
-                    {
-                        this.state.show?<iframe title="trailer" width="420" height="315"
-                        src={this.link + this.state.trailer}>
-                        </iframe>:null
-                    }
-                    
-                    <div>
-                        <button onClick={this.addToLibrary} className="details--add">Add To Watch List</button>
-                        <button onClick={this.removeFromLibrary} className="details--remove">Remove From Watch List</button>
-                        <div className="add_indicator">
-                             <p>{this.state.name} {this.state.anime}</p> 
-                        </div>
-                     
-                            
-                    </div>
-                
                 </div>
-                    
+
+                <div>
+
+                    <div className="details--video">
+
+                        {
+                            this.state.show ? <iframe title="trailer" width="420" height="315"
+                                src={this.link + this.state.trailer}>
+                            </iframe> : null
+                        }
+
+                        <div>
+                            <button onClick={this.addToLibrary} className="details--add">Add To Watch List</button>
+                            <button onClick={this.removeFromLibrary} className="details--remove">Remove From Watch List</button>
+                            <div className="add_indicator">
+                                <p>{this.state.name} {this.state.anime}</p>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
                     <div>
                         <h3>Streaming Links</h3>
                         <div>
@@ -218,7 +278,18 @@ class AnimeDetails extends Component {
                         <div>
                             <a href={this.state.streamingLink3}><h4>{this.state.streamer3}</h4></a>
                         </div>
-                        
+
+                    </div>
+                    <div>
+                        <h3>User Review</h3>
+                        <form>
+                            <textarea name="review" value={this.state.review} onChange={this.handleInputChange}></textarea>
+                            <div>
+                                <button onClick={this.save}>Save</button>
+                            </div>
+                            
+                        </form>
+
                     </div>
                 </div>
             </div>

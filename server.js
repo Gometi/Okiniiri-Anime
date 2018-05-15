@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const animeRouter =  require('./routes/animeRoute');
 const registerRoute = require('./routes/registerRoute');
 const authRoute = require('./routes/authRoute');
+const reviewRoute = require('./routes/reviewsRoute');
 const app = express();
 const PORT = process.env.PORT || 3002;
 
@@ -13,6 +14,7 @@ app.use(bodyParser.json());
 app.use('/animes', animeRouter);
 app.use('/register', registerRoute);
 app.use('/api', authRoute);
+app.use('/reviews', reviewRoute);
 
 app.listen(PORT, () =>{
     console.log(`running on port${PORT}`);

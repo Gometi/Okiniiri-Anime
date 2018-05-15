@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS library;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS reviews;
 
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
@@ -14,4 +15,12 @@ CREATE TABLE library(
  anime_name TEXT,
  user_id INT REFERENCES users(id) 
 );
+
+CREATE TABLE reviews(
+    id SERIAL PRIMARY KEY,
+    review TEXT,
+    anime_name VARCHAR,
+    user_name VARCHAR,
+    user_id INT REFERENCES users(id) 
+)
 
