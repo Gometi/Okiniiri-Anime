@@ -4,3 +4,15 @@
     max-height: 50rem;
     margin: 0 auto;
 }
+
+.slider__para{
+    color: rgba(9, 206, 140, 0.89);
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 660px){
+    .slider__para{
+        color: rgba(9, 206, 140, 0.89);
+        font-size: 1.4  rem;
+    }
+}

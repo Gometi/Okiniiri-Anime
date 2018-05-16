@@ -34,7 +34,7 @@ class Login extends Component {
         console.log('token', user)
     }
     handleSubmit(e) {
-        e.preventDefault();
+        // e.preventDefault();
         this.props.registerPostRequest(this.userData);
     }
 
@@ -42,7 +42,7 @@ class Login extends Component {
         return (
 
             <div className="login">
-                <form action="/" className="login__form" onSubmit={this.handleSubmit}>
+                <form  className="login__form">
                     <div>
                         <label className="login__label">Email:
                             <br/>
@@ -55,8 +55,7 @@ class Login extends Component {
                             <input className="login__input" type="password" onChange={this.handleInputChange} value={this.state.password} name="password" />
                         </label>
                     </div>
-
-                    <button className="login__btn" type="submit">Login</button>
+                    <Link to="/"><p onClick={this.handleSubmit} className="login__btn">Login</p></Link>
                 </form>
             </div>
         )

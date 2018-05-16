@@ -10,3 +10,11 @@ html{
 li{
   list-style: none;
 }
+
+.hideReview{
+  display: none;
+}
+
+.showReview{
+  display: block;
+}

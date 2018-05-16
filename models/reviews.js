@@ -5,9 +5,7 @@ function getReview(review) {
     return animeDb.any(`SELECT * FROM reviews WHERE anime_name = $/anime_name/ AND user_id = $/user_id/`, review);
 }
 
-function getUserReview(userReview) {
-    
-}
+
 
 // getting one 
 function getOne(id) {
@@ -26,6 +24,11 @@ function create(review) {
        `, review);
 }
 
+function update(review) {
+    return qp = animeDb.any(`UPDATE reviews SET review = $/review/ WHERE anime_name = $/anime_name/ AND user_id = $/user_id/ RETURNING *
+       `, review);
+}
+
 // deleting 
 function destroy(id) {
     return queryPromise = animeDb.none(`
@@ -36,5 +39,5 @@ function destroy(id) {
 module.exports = {
     create,
     getReview,
-    getUserReview
+    update
 }

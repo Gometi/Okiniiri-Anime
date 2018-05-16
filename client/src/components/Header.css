@@ -99,7 +99,7 @@ label{
     /* background-color: red; */
     top: 6.5rem;
     right: 6.5rem;
-    background-image: radial-gradient(rgba(255, 0, 0, 0.959),rgba(255, 166, 0, 0.952));
+    background-image: radial-gradient(rgba(0, 204, 255, 0.993),rgba(0, 255, 200, 0.993));
     transition: 1s all linear;
     z-index: 100;
     position: fixed;
@@ -134,8 +134,8 @@ label{
 }
 
 .hamburger__button{
+    cursor: pointer;
     background-color: rgba(26, 47, 139, 0);
-    text-align: center;
     height: 7rem;
     width: 7rem;
     position: fixed;
@@ -145,6 +145,7 @@ label{
     background-color: #fff;
     border-radius: 50%;
     vertical-align: middle;
+    text-align: center;
   }
 
 .hamburger__list{
@@ -160,7 +161,38 @@ label{
     font-size: 2rem;
 }
 
+/* hamburger icon */
 .hamburger__icon{
+    position: relative;
+    margin-top: 3.5rem;
+}
+.hamburger__icon, .hamburger__icon::before, .hamburger__icon::after {
+   width: 3rem;
+   height: 2px;
+   background-color: rgba(8, 8, 8, 0.87); 
+   display: inline-block;
+}
+
+.hamburger__icon::before, .hamburger__icon::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    transition: all .3s linear;
+}
+
+.hamburger__icon::before{
+    top: -.75rem;
+}
+.hamburger__icon::after{
+    top: .75rem;
+}
+
+.hamburger__button:hover .hamburger__icon::before{
+    top: -1rem;
+}
+
+.hamburger__button:hover .hamburger__icon::after{
+    top: 1rem;
 }
 
 @media screen and (max-width:660px){
@@ -175,6 +207,13 @@ label{
     .hamburger__list li{
         padding: 2rem;
         color: rgba(255, 255, 255, 0.904);
+    }
+
+    /* .header__img{
+        transform: translate(40%,0);
+    } */
+    .header{
+        justify-content: center;
     }
 }
 
@@ -239,3 +278,4 @@ label{
         border-left-color: rgba(153, 74, 218, 0.911);
     }
 }
+

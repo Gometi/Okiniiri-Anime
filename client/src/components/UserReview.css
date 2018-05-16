@@ -1,0 +1,24 @@
+.review{
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.review__header{
+    border: 1px solid black;
+    display: inline-block;
+    padding: 1rem;
+}
+
+.review__textArea{
+    width: 80%;
+    height: 10vh;
+}
+
+.review__save, .review__edit{
+    display: inline-block;
+    background-color: rgba(22, 21, 21, 0.925);
+    margin: 0 auto;
+    padding: 1rem;
+    color: azure;
+    margin: 2rem;
+}

@@ -10,22 +10,30 @@ function create(req, res, next) {
         .catch(next);
 }
 
-function getReview(req, res, next) {
-    animeDb.getReview(req.body)
+function update(req, res, next) {
+    animeDb.update(req.body)
         .then(data => {
-            res.json(data);
+            res.locals.review = data;
             next();
         })
         .catch(next);
 }
-function getUserReview(params) {
-    
+
+function getReview(req, res, next) {
+    animeDb.getReview(req.body)
+        .then(data => {
+            console.log('data', data)
+            res.json(data);
+            
+        })
+        .catch(next);
 }
+
 
 
 
 module.exports = {
     create,
     getReview,
-    getUserReview
+    update
 }
