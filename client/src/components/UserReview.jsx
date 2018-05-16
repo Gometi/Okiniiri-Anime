@@ -140,13 +140,13 @@ class UserReview extends Component {
 
     create(e) {
         e.preventDefault();
-        this.createReview();
+        if (localStorage.getItem('authToken')) this.createReview();
     }
 
     update(e){
      e.preventDefault();
-     this.updateReview();
-
+        if (localStorage.getItem('authToken')) this.updateReview();
+        document.getElementById('editReview').classList.add('hideReview')
     }
     showEditForm(){
         document.getElementById('editReview').classList.add('showReview')
@@ -159,12 +159,11 @@ class UserReview extends Component {
     render() {
         return (
             <div className="review">
-                <h3 className="review__header">User Review</h3>
+                <h3 className="review__header"> {localStorage.getItem('authToken') ? jwtDecode(localStorage.getItem('authToken')).username +"'s" : 'User'} Review</h3>
                 <h4 className={this.state.getReview ? 'showReview' : 'hideReview'}>{(this.state.review) && this.state.review}</h4>
                 <form id="editReview" className={this.state.getReview ? 'hideReview' : 'showReview' }>
                 <h5 className="review__review">Write Review</h5>
                     <textarea className="review__textArea" name="review" value={this.state.review} onChange={this.handleInputChange}></textarea>
-                        {/* <button onClick={this.create}>create</button> */}
                         <br/>
                         <button className="review__save" onClick={this.state.getReview ? this.update : this.create}>Save</button>
                         

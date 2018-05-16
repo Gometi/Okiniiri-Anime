@@ -28,7 +28,6 @@ class RegisterLogin extends Component {
  
 
  saveToken(respBody) {
-     console.log("token", respBody)
     localStorage.setItem('authToken', respBody.token)
     const user = jwtDecode(respBody.token);
     return user;

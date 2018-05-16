@@ -25,21 +25,7 @@ class Header extends Component {
         }
     }
     componentDidMount(){
-        let currentUser;
-        if (!localStorage.getItem('authToken')) {
-            currentUser = "";
-            this.setState({
-                currentUser: currentUser
-            })
-        }
-        else {
-            const token = localStorage.getItem('authToken');
-            const user = jwtDecode(token);
-            currentUser = user.username;
-            this.setState({
-                currentUser: currentUser
-            })
-        }
+        
 
     }
 
@@ -48,12 +34,6 @@ class Header extends Component {
     }
 
 
-    printToken() {
-
-        const token = localStorage.getItem('authToken');
-        const user = jwtDecode(token);
-        console.log('token', user)
-    }
 
     render(){
         return (
@@ -69,7 +49,7 @@ class Header extends Component {
                         <ul className="header__links">
                             <li><Link to="/" className="links--bar">Home</Link></li>
                             <li><Link to="/register_login" className="links--bar">Register Login</Link></li>
-                            <li onClick={this.resetHeader}><Link to={this.state.currentUser ? '/library' : '/'} className="links--bar">Library</Link></li>
+                            <li><Link to={localStorage.getItem('authToken') ? '/library' : '/'} className="links--bar">Library</Link></li>
                             <li onClick={this.logOut}><Link to="/" className="links--bar">Logout</Link></li>
                         </ul>
                     </nav>
@@ -87,14 +67,14 @@ class Header extends Component {
                             <li><Link to="/" className="links--bar yoo ">Home</Link></li>
                             <li><Link to="/register_login" className="links--bar yoo">Register Login</Link></li>
                             <li><Link to="/library" className="links--bar yoo">Library</Link></li>
-                            <li onClick={this.logOut}><Link to="/" className="links--bar yoo">Logout</Link></li>
+                            <li className={localStorage.getItem('authToken') ? 'show' : 'hide'} onClick={this.logOut}><Link to="/" className="links--bar yoo">Logout</Link></li>
                             
                         </ul>
                     </nav>
                 </div>
 
                 <div className="header__greet">
-                    <h3 className="greet--header">Welcome {this.state.currentUser}</h3>
+                    <h3 className="greet--header">Welcome {localStorage.getItem('authToken') ? jwtDecode(localStorage.getItem('authToken')).username : ''}</h3>
                     <SearchBar />
                 </div>
             </div>
