@@ -53,30 +53,30 @@ https://drive.google.com/open?id=1HJfpCrMB95IRqWGU_o75xIb4IiWgf5k0edn7ibWZJec
 - Nodemon
 
 
-Plan of attack Time continuum
+## Plan of attack Time continuum
 
 Legend [0]=not accomplished [1]=accomplished
 
-day1: 
+### day1: 
 	Test and Tinker with Kitsu API[1] 
 	Create a visual wireframe of Front End[1]
 	Create data tables for Users and Animes[1]
 
 
-day2:
+### day2:
 	Code out the get Models[20%]
 	Code out the get Routes[0]
 	Code out the get Controllers[0]
 
-day3 
+### day3 
 	started auth[0]
 	continuation of Models[50%]//we have get and post
 	routes [40%] we have anime-detail page as well as home-page
 
-day4
+### day4
 	We have a stylish Home-Page and Anime-Details page rendering data from the API
 	Actually work on come controllers[50%] still need to finish out all CRUD and AUTH
 	
-day5
+### day5
 	created Registration
 	created Review text box with it's PUT and POST methods 
