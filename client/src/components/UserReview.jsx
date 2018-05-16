@@ -1,6 +1,7 @@
 
 import React, { Component } from "react";
 import jwtDecode from 'jwt-decode';
+import './UserReview.css';
 
 class UserReview extends Component {
     constructor(props) {
@@ -157,19 +158,18 @@ class UserReview extends Component {
 
     render() {
         return (
-            <div>
-                <h3>User Review</h3>
+            <div className="review">
+                <h3 className="review__header">User Review</h3>
                 <h4 className={this.state.getReview ? 'showReview' : 'hideReview'}>{(this.state.review) && this.state.review}</h4>
                 <form id="editReview" className={this.state.getReview ? 'hideReview' : 'showReview' }>
-                <h5>Write Review</h5>
-                    <textarea name="review" value={this.state.review} onChange={this.handleInputChange}></textarea>
-                    <div>
-                    
+                <h5 className="review__review">Write Review</h5>
+                    <textarea className="review__textArea" name="review" value={this.state.review} onChange={this.handleInputChange}></textarea>
                         {/* <button onClick={this.create}>create</button> */}
-                        <button onClick={this.state.getReview ? this.update : this.create}>Save</button>
-                    </div>
+                        <br/>
+                        <button className="review__save" onClick={this.state.getReview ? this.update : this.create}>Save</button>
+                        
                 </form>
-                <button onClick={this.showEditForm}>Edit Review</button>
+                <button className="review__edit" onClick={this.showEditForm}>Edit Review</button>
             </div>
         )
     }

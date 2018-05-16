@@ -30,5 +30,8 @@
     "node-fetch": "^2.1.2",
     "nodemon": "^1.17.4",
     "pg-promise": "^8.4.3"
+  },
+  "devDependencies": {
+    "image-webpack-loader": "^4.2.0"
   }
 }

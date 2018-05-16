@@ -1,0 +1,38 @@
+.library{
+    text-align: center;
+}
+
+/* library header */
+.library__header{
+    color: rgba(0, 0, 0, 0.884);
+    font-size: 5rem;
+    text-shadow: 0px 3px 0px #b2a98f,
+        0px 14px 10px rgba(0,0,0,0.15),
+        0px 24px 2px rgba(0,0,0,0.1),
+        0px 34px 30px rgba(0,0,0,0.1);
+    transition: all .3s linear;
+}
+
+.library__header:hover{
+    text-shadow: 0px 2px 0px #b2a98f,
+        0px 7px 5px rgba(0,0,0,0.15),
+        0px 12px 1px rgba(0,0,0,0.1),
+        0px 17px 15px rgba(0,0,0,0.1);
+}
+
+.library__animes{
+    width: 90rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+@media screen and (max-width:660px){
+    .library__animes{
+        width: 40vw;
+       display: inline-flex;
+       justify-content: center;
+    }
+ 
+}

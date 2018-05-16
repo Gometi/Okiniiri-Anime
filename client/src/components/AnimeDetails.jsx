@@ -247,6 +247,20 @@ class AnimeDetails extends Component {
                         <p>Episodes: {this.state.episodeCount}</p>
                         <p>Status: {this.state.status}</p>
                         <p>Rating: {this.state.rating}</p>
+
+                        <div className="streaming">
+                            <p>Streaming Links:</p>
+                            <div>
+                                <a href={this.state.streamingLink1}><h4>{this.state.streamer1}</h4></a>
+                            </div>
+                            <div>
+                                <a href={this.state.streamingLink2}><h4>{this.state.streamer2}</h4></a>
+                            </div>
+                            <div>
+                                <a href={this.state.streamingLink3}><h4>{this.state.streamer3}</h4></a>
+                            </div>
+                        </div>
+
                         <button onClick={this.display} className="details--watch"> Watch trailer  </button>
 
 
@@ -266,29 +280,13 @@ class AnimeDetails extends Component {
                         <div>
                             {/* <button onClick={this.library ? this.removeFromLibrary : this.addToLibrary} className="details--add">{this.state.id ? this.remove : this.add}</button> */}
                             <button onClick={this.addToLibrary} className="details--add">Add To Watch List</button>
-                            <button onClick={this.removeFromLibrary} className="details--remove">Remove From Watch List</button> */}
+                            <button onClick={this.removeFromLibrary} className="details--remove">Remove From Watch List</button> 
                              <div className="add_indicator">
                                 <p>{this.state.name} {this.library ? this.alreadyInLibrary : this.notInLibrary}</p>
                             </div>
-
-
                         </div>
-
                     </div>
 
-                    <div>
-                        <h3>Streaming Links</h3>
-                        <div>
-                            <a href={this.state.streamingLink1}><h4>{this.state.streamer1}</h4></a>
-                        </div>
-                        <div>
-                            <a href={this.state.streamingLink2}><h4>{this.state.streamer2}</h4></a>
-                        </div>
-                        <div>
-                            <a href={this.state.streamingLink3}><h4>{this.state.streamer3}</h4></a>
-                        </div>
-
-                    </div>
                     <div>
 
                      <UserReview id={this.props.id} anime_name={this.state.anime_name}/>

@@ -25,6 +25,7 @@
 
 /* button */
 .login__btn{
+    margin: 0 auto;
     background-color: rgba(108, 11, 236, 0.863);
     padding: 1rem;
     width: 40%;

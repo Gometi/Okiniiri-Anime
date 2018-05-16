@@ -30,8 +30,8 @@
     left: 0;
     background-image: linear-gradient(
         to right bottom,
-         rgba(52, 228, 234, 0.897),
-         rgba(153, 74, 218, 0.911));
+         rgba(52, 228, 234, 0.678),
+         rgba(153, 74, 218, 0.637));
     z-index: 3;
 }
 /* header for the anime */
@@ -100,4 +100,19 @@
     padding: 1rem;
     background-color: rgba(27, 26, 26, 0.877);
     color: rgba(240, 248, 255, 0.918);
+}
+
+
+@media screen and (max-width:660px){
+    .details__info{
+        flex-direction: column;
+    }
+
+    .details__pic{
+        transform: translate(120%,0);
+    }
+
+    .details--watch{
+        transform: translate(60%,0);
+    }
 }

@@ -20,5 +20,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:3002"
+  "proxy": "http://localhost:3002",
+  "devDependencies": {
+    "image-webpack-loader": "^4.2.0"
+  }
 }

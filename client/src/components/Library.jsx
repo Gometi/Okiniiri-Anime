@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-
 import Anime from "./Anime";
 import Header from './Header';
 import jwtDecode from 'jwt-decode';
+import './Library.css';
 
 class Library extends Component{
    constructor(props){
@@ -55,15 +55,16 @@ class Library extends Component{
 
    render(){
        return(
-           <div>
-           <Header/>
-              <h1>Library</h1>
-               {this.state.animeList.map((anime, index) => (
-                   <div key={index}>
-                       <Anime name={anime.anime_name} />
-                      
-                   </div>
-               ))}
+           <div className="library">
+                <Header/>
+                <h1 className="library__header">Library</h1>
+                <div className="library__animes">
+                    {this.state.animeList.map((anime, index) => (
+                        <div key={index} className="library__list">
+                            <Anime name={anime.anime_name} />
+                        </div>
+                    ))}
+                </div>
            </div>
        )
    }

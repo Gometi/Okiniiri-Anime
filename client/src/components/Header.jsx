@@ -62,7 +62,7 @@ class Header extends Component {
                 <div className="header">
 
                     <div className="header__logo">
-                        <img src={require("./images/logoo.PNG")} className="header__img" />
+                        <img src={require("./images/logo.PNG")} className="header__img" />
                     </div>
 
                     <nav >
@@ -86,7 +86,6 @@ class Header extends Component {
                         <ul className="hamburger__list">
                             <li><Link to="/" className="links--bar yoo ">Home</Link></li>
                             <li><Link to="/register_login" className="links--bar yoo">Register Login</Link></li>
-                            <li><Link to="/library" className="links--bar yoo">Library</Link></li>
                             <li><Link to="/library" className="links--bar yoo">Library</Link></li>
                             <li onClick={this.logOut}><Link to="/" className="links--bar yoo">Logout</Link></li>
                             

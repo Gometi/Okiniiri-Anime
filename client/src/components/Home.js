@@ -15,7 +15,7 @@ const animeList = [
     'one piece',
     'hunter',
     'dears',
-    'x',
+    'samurai jack',
     'cardcaptor',
     'detective',
     'bleach'
