@@ -10,13 +10,24 @@ class Header extends Component {
         super(props)
 
         this.state = {
-            currentUser: "Guest"
+            currentUser: "Guest",
+            key: Math.random()
+        }
+        this.guest = "Guest";
+    }
+
+
+    getUser() {
+        let user = "";
+        if (localStorage.getItem('authToken')) {
+            user = jwtDecode(localStorage.getItem('authToken'));
+            return user;
         }
     }
     componentDidMount(){
         let currentUser;
         if (!localStorage.getItem('authToken')) {
-            currentUser = "Guest";
+            currentUser = "";
             this.setState({
                 currentUser: currentUser
             })
@@ -35,6 +46,7 @@ class Header extends Component {
     logOut(){
         localStorage.setItem('authToken', '')
     }
+
 
     printToken() {
 
@@ -57,7 +69,7 @@ class Header extends Component {
                         <ul className="header__links">
                             <li><Link to="/" className="links--bar">Home</Link></li>
                             <li><Link to="/register_login" className="links--bar">Register Login</Link></li>
-                            <li><Link to="/library" className="links--bar">Library</Link></li>
+                            <li onClick={this.resetHeader}><Link to={this.state.currentUser ? '/library' : '/'} className="links--bar">Library</Link></li>
                             <li onClick={this.logOut}><Link to="/" className="links--bar">Logout</Link></li>
                         </ul>
                     </nav>

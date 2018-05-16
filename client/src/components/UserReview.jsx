@@ -9,11 +9,11 @@ class UserReview extends Component {
             id: "",
             review: "",
             anime_name: "",
-            user_id: ""
-
+            user_id: "",
+            getReview: false
         }
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.save = this.save.bind(this);
+        this.create = this.create.bind(this);
         this.update = this.update.bind(this);
     }
 
@@ -79,7 +79,8 @@ class UserReview extends Component {
             .then(response => {
                 if(response.length > 0){
                     this.setState({
-                        review: response[0].review
+                        review: response[0].review,
+                        getReview: true
                     })
                 }
                 
@@ -106,7 +107,9 @@ class UserReview extends Component {
                 if (!resp.ok) throw new Error(resp.statusMessage);
                 return resp.json();
             })
-            .then(response => console.log(response));
+            .then(response => {
+                this.fetchUserReview();
+                console.log(response)});
     }
 
     updateReview(){
@@ -129,10 +132,12 @@ class UserReview extends Component {
                 if (!resp.ok) throw new Error(resp.statusMessage);
                 return resp.json();
             })
-            .then(response => console.log('updated review',response));
+            .then(response => {
+                this.fetchUserReview();
+                console.log('updated review',response)});
     }
 
-    save(e) {
+    create(e) {
         e.preventDefault();
         this.createReview();
     }
@@ -141,6 +146,9 @@ class UserReview extends Component {
      e.preventDefault();
      this.updateReview();
 
+    }
+    showEditForm(){
+        document.getElementById('editReview').classList.add('showReview')
     }
 
     componentDidMount() {
@@ -151,14 +159,17 @@ class UserReview extends Component {
         return (
             <div>
                 <h3>User Review</h3>
-                <h4>{(this.state.review) && this.state.review}</h4>
-                <form>
+                <h4 className={this.state.getReview ? 'showReview' : 'hideReview'}>{(this.state.review) && this.state.review}</h4>
+                <form id="editReview" className={this.state.getReview ? 'hideReview' : 'showReview' }>
+                <h5>Write Review</h5>
                     <textarea name="review" value={this.state.review} onChange={this.handleInputChange}></textarea>
                     <div>
-                        <button onClick={this.save}>Save</button>
-                        <button onClick={this.update}>Update</button>
+                    
+                        {/* <button onClick={this.create}>create</button> */}
+                        <button onClick={this.state.getReview ? this.update : this.create}>Save</button>
                     </div>
                 </form>
+                <button onClick={this.showEditForm}>Edit Review</button>
             </div>
         )
     }

@@ -34,6 +34,11 @@ class AnimeDetails extends Component {
             show: false
 
         }
+        this.add = "Add To Library";
+        this.remove = "Remove From Library";
+        this.notInLibrary = "Not In Libraby";
+        this.alreadyInLibrary = "Is In Your Library"
+        this.library = false;
         this.link = "https://www.youtube.com/embed/";
         this.addToLibrary = this.addToLibrary.bind(this);
         this.removeFromLibrary = this.removeFromLibrary.bind(this);
@@ -157,7 +162,7 @@ class AnimeDetails extends Component {
         this.setState({
             anime: "Added To Library"
         })
-
+    this.library = true;
     }
 
     removeFromLibrary() {
@@ -170,6 +175,8 @@ class AnimeDetails extends Component {
                 return resp.json();
             })
             .then(console.log('deleted'))
+
+            this.library = false;
     }
 
     handleInputChange(e) {
@@ -257,10 +264,11 @@ class AnimeDetails extends Component {
                         }
 
                         <div>
+                            {/* <button onClick={this.library ? this.removeFromLibrary : this.addToLibrary} className="details--add">{this.state.id ? this.remove : this.add}</button> */}
                             <button onClick={this.addToLibrary} className="details--add">Add To Watch List</button>
-                            <button onClick={this.removeFromLibrary} className="details--remove">Remove From Watch List</button>
-                            <div className="add_indicator">
-                                <p>{this.state.name} {this.state.anime}</p>
+                            <button onClick={this.removeFromLibrary} className="details--remove">Remove From Watch List</button> */}
+                             <div className="add_indicator">
+                                <p>{this.state.name} {this.library ? this.alreadyInLibrary : this.notInLibrary}</p>
                             </div>
 
 

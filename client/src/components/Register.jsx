@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import './Register.css';
 
 
@@ -32,7 +33,7 @@ class Register extends Component {
     }
 
     handleSubmit(e) {
-        e.preventDefault();
+        // e.preventDefault();
         this.props.registerPostRequest(this.userData);
     }
 
@@ -40,7 +41,7 @@ class Register extends Component {
         return (
 
             <div className="register">
-                <form action="/" className="register__form" onSubmit={this.handleSubmit}>
+                <form  className="register__form" onSubmit={this.handleSubmit}>
                     <div>
                         <label className="register__label" >Username: 
                             <br/>
@@ -59,7 +60,7 @@ class Register extends Component {
                             <input className="register__input" type="password" onChange={this.handleInputChange} value={this.state.password} name="password" />
                         </label>
                     </div>
-                    <button className="register__btn" type="submit">Register</button>
+                    <Link to="/"><p onClick={this.handleSubmit} className="register__btn">register</p></Link>
                 </form>
             </div>
         )
