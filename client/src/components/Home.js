@@ -9,12 +9,12 @@ import Header from './Header';
 // import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const animeList = [
-    'violet',
-    'lucky star',
+    'Death note',
+    'Cowboy Bebop',
     'naruto',
-    'one piece',
+    'fullmetal alchemist',
     'hunter',
-    'dears',
+    'psycho pass',
     'samurai jack',
     'cardcaptor',
     'detective',
