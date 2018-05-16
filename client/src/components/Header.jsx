@@ -66,7 +66,7 @@ class Header extends Component {
                         <ul className="hamburger__list">
                             <li><Link to="/" className="links--bar yoo ">Home</Link></li>
                             <li><Link to="/register_login" className="links--bar yoo">Register Login</Link></li>
-                            <li><Link to="/library" className="links--bar yoo">Library</Link></li>
+                            <li><Link to={localStorage.getItem('authToken') ? '/library' : '/'} className="links--bar yoo">Library</Link></li>
                             <li className={localStorage.getItem('authToken') ? 'show' : 'hide'} onClick={this.logOut}><Link to="/" className="links--bar yoo">Logout</Link></li>
                             
                         </ul>

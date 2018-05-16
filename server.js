@@ -11,6 +11,10 @@ const PORT = process.env.PORT || 3002;
 app.use(logger('dev'));
 app.use(bodyParser.json());
 
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'));
+}
+
 app.use('/animes', animeRouter);
 app.use('/register', registerRoute);
 app.use('/api', authRoute);

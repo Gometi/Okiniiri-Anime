@@ -12,7 +12,7 @@ const animeList = [
     'Death note',
     'Cowboy Bebop',
     'naruto',
-    'fullmetal alchemist',
+    'one punch man',
     'hunter',
     'psycho pass',
     'samurai jack',
