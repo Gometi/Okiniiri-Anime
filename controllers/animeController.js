@@ -10,14 +10,6 @@ function getAll(req, res, next) {
         .catch(next);
 }
 
-function getOne(req, res, next) {
-	animeDb.getOne()
-		.then(data => {
-			res.locals.anime = data;
-			next();
-		})
-		.catch(next);
-}
 
 function create(req, res, next) {
 	animeDb.create(req.body)
@@ -38,7 +30,6 @@ function destroy(req, res, next) {
 
 module.exports = {
 	getAll,
-	getOne,
 	create,
 	destroy
 }
