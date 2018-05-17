@@ -2,7 +2,6 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const animeRouter =  require('./routes/animeRoute');
-const registerRoute = require('./routes/registerRoute');
 const authRoute = require('./routes/authRoute');
 const reviewRoute = require('./routes/reviewsRoute');
 const app = express();
@@ -16,7 +15,6 @@ if(process.env.NODE_ENV === 'production'){
 }
 
 app.use('/animes', animeRouter);
-app.use('/register', registerRoute);
 app.use('/api', authRoute);
 app.use('/reviews', reviewRoute);
 
