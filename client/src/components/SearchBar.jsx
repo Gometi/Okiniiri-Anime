@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import {Redirect} from 'react-router-dom';
 import './SearchBar.css';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { faCoffee, faSearch } from '@fortawesome/fontawesome-free-solid';
@@ -8,12 +8,12 @@ class SearchBar extends Component{
     constructor(props){
         super(props);
         this.state = {
-            anime: ""
+            anime: "",
+            search: false
         }
         
         this.url = "/search/"
         this.handleInputChange = this.handleInputChange.bind(this);
-        
     }
 
     handleInputChange(e) {
@@ -21,29 +21,32 @@ class SearchBar extends Component{
         this.setState({
             [name]: value
         });
+        
     }
 
-    enterKeyPressed(){
-        const input = document.getElementById('form__input');
-        input.addEventListener("keyup", function(e) {
-            e.preventDefault();
-            if(e.keyCode === 13){
-                document.getElementById('buttonClick').click();
-            }
-        })
+handleSubmit(e){
+    e.preventDefault();
+    
+    this.setState({
+            search: true
+        });
+}
 
-    }
+    
     componentDidMount(){
-        this.enterKeyPressed();
     }
 
     render(){
+        if(this.state.search){
+            return <Redirect to={this.url + this.state.anime}/>
+        }
+
         return(
             <div className="form">
-                <form action={this.url + this.state.anime}>
+                <form  onSubmit={this.handleSubmit.bind(this)}>
 
-                    <input id="form__input" type="text" name="anime" value={this.state.anime} onChange={this.handleInputChange} />
-                    <button id="buttonClick" onClick={this.handleSubmit} type="buttom"> <FontAwesomeIcon icon={faSearch} /> </button>
+                    <input id="form__input" required type="text" name="anime" placeholder="Enter the name of an Anime"  value={this.state.anime} onChange={this.handleInputChange} />
+                    <button id="buttonClick" > <FontAwesomeIcon icon={faSearch} /> </button>
                 </form>
 
                 
