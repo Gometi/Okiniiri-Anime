@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Anime from './Anime';
 import Slideshow from "./Slideshow";
 import './Anime.css';
@@ -22,36 +22,54 @@ const animeList = [
 
 ]
 
-function Animes(props) {
+class Animes extends Component {
+constructor(props){
+    super(props)
+    this.state ={
+        isLoggedIn: false
+    }
+}
+componentDidMount(){
+    
+    if (localStorage.getItem('authToken')){
+        this.setState({
+            isLoggedIn: true
+        });
+    }
+    
+}
+    render(){
+        return (
+            <div>
 
-    return (
-        <div>
+                <Header />
 
-        <Header/>
-
-            <Slideshow/>
+                <Slideshow />
 
 
-            <div className="home__header"> 
-                <div className="header--img">
-                </div>
-                <div className="header--title">
-                    <h1 className="title--main"> Okiniiri Anime </h1>
-                    <p className="title--content">
-                        Your home for Anime
+                <div className="home__header">
+                    <div className="header--img">
+                    </div>
+                    <div className="header--title">
+                        <h1 className="title--main"> Okiniiri Anime </h1>
+                        <p className="title--content">
+                            Your home for Anime
                     </p>
+                    </div>
+                </div>
+
+                <div className="animeList__container">
+                    {animeList.map((anime, index) => (
+                        <div className="anime__list" key={index}>
+                            <Anime name={anime} />
+                        </div>
+                    ))}
                 </div>
             </div>
-           
-           <div className="animeList__container">
-            {animeList.map((anime, index) => (
-                <div className="anime__list" key={index}>
-                    <Anime name={anime} />
-                </div>
-            ))}
-            </div>
-        </div>
-    )
+        )
+    }
+
+    
 
 
 }

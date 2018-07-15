@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Register from "./Register";
 import Login from "./Login";
-
+import { Redirect } from 'react-router-dom';
 import Header from './Header';
 import jwtDecode from 'jwt-decode';
 import './RegisterLogin.css';
@@ -12,7 +12,9 @@ class RegisterLogin extends Component {
         this.state = {
             username: "",
             password: "",
-            email: ""
+            email: "",
+            isLoggedIn: false,
+            error: ""
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -34,7 +36,6 @@ class RegisterLogin extends Component {
 }
 
     handlePostData(url, data) {
-       
         const userData = JSON.stringify(data);
         const options = {
             method: "POST",
@@ -45,32 +46,57 @@ class RegisterLogin extends Component {
         }
         fetch(url, options)
             .then(resp => {
-                if (!resp.ok) throw new Error(resp.statusMessage);
-                return resp.json();
+                if(resp.ok){
+                    return resp.json();
+                }else{
+                    this.setState({
+                        error: "Invalid Username or Password!!"
+                    });
+                }
+                // if (!resp.ok) throw new Error(resp.statusMessage);
+                
             })
-            .then(this.saveToken)
+            .then(data =>{
+                if(data){
+                    this.saveToken(data)
+                    this.setState({
+                        isLoggedIn: true
+                    });
+                }
+            })
+            .catch(err =>{
+                console.log(err.message)
+            })
     }
 
     registerPostRequest(data){
-        this.handlePostData(data.url, data.post);
+        return this.handlePostData(data.url, data.post);
     }
 
     render() {
+        if (this.state.isLoggedIn) {
+            return <Redirect to="/" />
+        }
+
         return (
 
             <div>
             <Header/>
-                
-            <div className="registerLogin">
-                <div className="registerLogin__register">
-                    <Register registerPostRequest={this.registerPostRequest.bind(this)} />
-                </div>
-                <br/>
-            
-                <div className="registerLogin__login">
-                    <Login registerPostRequest={this.registerPostRequest.bind(this)} />
-                </div>
+            <div className="container">
+                    <h2 className="error_message">{this.state.error}</h2>
+                    <div className="registerLogin">
+                        <div className="registerLogin__login">
+                            <Login registerPostRequest={this.registerPostRequest.bind(this)} />
+                        </div>
+                        <br />
+                        <div className="registerLogin__register">
+                            <Register registerPostRequest={this.registerPostRequest.bind(this)} />
+                        </div>
+
+                    </div>
             </div>
+                
+            
             </div>
         )
     }

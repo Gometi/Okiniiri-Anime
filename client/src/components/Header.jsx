@@ -10,27 +10,36 @@ class Header extends Component {
         super(props)
 
         this.state = {
-            currentUser: "Guest",
-            key: Math.random()
+            currentUser: "",
+            status: ""
         }
-        this.guest = "Guest";
+        this.checkStatus = this.checkStatus.bind(this);
     }
 
 
-    getUser() {
-        let user = "";
-        if (localStorage.getItem('authToken')) {
-            user = jwtDecode(localStorage.getItem('authToken'));
-            return user;
-        }
-    }
+    
     componentDidMount(){
-        
+        let user = "";
+        if (localStorage.getItem('authToken')){
+            user = jwtDecode(localStorage.getItem('authToken'));
+            this.setState({
+                currentUser: user.username
+            })
+        }
 
     }
 
     logOut(){
-        localStorage.setItem('authToken', '')
+        localStorage.setItem('authToken', '');
+        
+    }
+    checkStatus(){
+        console.log('dfdfd')
+        if (!localStorage.getItem('authToken')){
+          this.setState({
+              status: "You are not Logged In!"
+          })
+        }
     }
 
 
@@ -48,8 +57,8 @@ class Header extends Component {
                     <nav >
                         <ul className="header__links">
                             <li><Link to="/" className="links--bar">Home</Link></li>
-                            <li><Link to="/register_login" className="links--bar">Register Login</Link></li>
-                            <li><Link to={localStorage.getItem('authToken') ? '/library' : '/'} className="links--bar">Library</Link></li>
+                            <li className={localStorage.getItem('authToken') ? 'hide' : 'show'}><Link to="/register_login" className="links--bar"> Login</Link></li>
+                            <li onClick={this.checkStatus}><Link to={localStorage.getItem('authToken') ? '/library' : '#'} className="links--bar">Library</Link></li>
                             <li className={localStorage.getItem('authToken') ? 'show' : 'hide'} onClick={this.logOut}><Link to="/" className="links--bar">Logout</Link></li>
                         </ul>
                     </nav>
@@ -65,8 +74,8 @@ class Header extends Component {
                     <nav className="hamburger__nav">
                         <ul className="hamburger__list">
                             <li><Link to="/" className="links--bar yoo ">Home</Link></li>
-                            <li><Link to="/register_login" className="links--bar yoo">Register Login</Link></li>
-                            <li><Link to={localStorage.getItem('authToken') ? '/library' : '/'} className="links--bar yoo">Library</Link></li>
+                            <li className={localStorage.getItem('authToken') ? 'hide' : 'show'}><Link to="/register_login" className="links--bar yoo"> Login</Link></li>
+                            <li onClick={this.checkStatus}><Link to={localStorage.getItem('authToken') ? '/library' : '#'} className="links--bar yoo">Library</Link></li>
                             <li className={localStorage.getItem('authToken') ? 'show' : 'hide'} onClick={this.logOut}><Link to="/" className="links--bar yoo">Logout</Link></li>
                             
                         </ul>
@@ -74,7 +83,8 @@ class Header extends Component {
                 </div>
 
                 <div className="header__greet">
-                    <h3 className="greet--header">Welcome {localStorage.getItem('authToken') ? jwtDecode(localStorage.getItem('authToken')).username : ''}</h3>
+                    <h3 className="greet--header">Welcome {this.state.currentUser}</h3>
+                    <h3 className="status">{this.state.status}</h3>
                     <SearchBar />
                 </div>
             </div>

@@ -33,7 +33,7 @@ class Register extends Component {
     }
 
     handleSubmit(e) {
-        // e.preventDefault();
+        e.preventDefault();
         this.props.registerPostRequest(this.userData);
     }
 
@@ -45,22 +45,22 @@ class Register extends Component {
                     <div>
                         <label className="register__label" >Username: 
                             <br/>
-                            <input className="register__input" type="text" onChange={this.handleInputChange} value={this.state.username} name="username" />
+                            <input required className="register__input" type="text" onChange={this.handleInputChange} value={this.state.username} name="username" />
                         </label>
                     </div>
                     <div>
                         <label className="register__label">Email:
                             <br/>
-                            <input className="register__input" type="email" onChange={this.handleInputChange} value={this.state.email} name="email" />
+                            <input required className="register__input" type="email" onChange={this.handleInputChange} value={this.state.email} name="email" />
                         </label>
                     </div>
                     <div>
                         <label className="register__label">Password:
                             <br/>
-                            <input className="register__input" type="password" onChange={this.handleInputChange} value={this.state.password} name="password" />
+                            <input required className="register__input" type="password" onChange={this.handleInputChange} value={this.state.password} name="password" />
                         </label>
                     </div>
-                    <Link to="/"><p onClick={this.handleSubmit} className="register__btn">register</p></Link>
+                    <button className="register__btn">register</button>
                 </form>
             </div>
         )

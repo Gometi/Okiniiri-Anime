@@ -11,6 +11,13 @@
 .registerLogin__login{
     flex:2;
 }
+.error_message{
+    color: red;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+}
 
 @media screen and (max-width:660px){
     .registerLogin{

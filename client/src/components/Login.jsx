@@ -27,14 +27,10 @@ class Login extends Component {
         }
         
     }
-    printToken(){
-        
-        const token = localStorage.getItem('authToken');
-        const user = jwtDecode(token);
-        console.log('token', user)
-    }
+    
     handleSubmit(e) {
-        // e.preventDefault();
+        e.preventDefault();
+        
         this.props.registerPostRequest(this.userData);
     }
 
@@ -42,20 +38,20 @@ class Login extends Component {
         return (
 
             <div className="login">
-                <form  className="login__form">
+                <form className="login__form" onSubmit={this.handleSubmit}>
                     <div>
                         <label className="login__label">Email:
                             <br/>
-                            <input className="login__input" type="email" onChange={this.handleInputChange} value={this.state.email} name="email" />
+                            <input required className="login__input" type="email" onChange={this.handleInputChange} value={this.state.email} name="email" />
                         </label>
                     </div>
                     <div>
                         <label className="login__label">Password:
                             <br/>
-                            <input className="login__input" type="password" onChange={this.handleInputChange} value={this.state.password} name="password" />
+                            <input required className="login__input" type="password" onChange={this.handleInputChange} value={this.state.password} name="password" />
                         </label>
                     </div>
-                    <Link to="/"><p onClick={this.handleSubmit} className="login__btn">Login</p></Link>
+                    <button className="login__btn" >Login</button>
                 </form>
             </div>
         )

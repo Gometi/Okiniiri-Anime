@@ -58,6 +58,7 @@ class Library extends Component{
            <div className="library">
                 <Header/>
                 <h1 className="library__header">Library</h1>
+               <h2>{this.state.animeList < 1 ? "There are no Animes in Your Library!" : ""}</h2>
                 <div className="library__animes">
                     {this.state.animeList.map((anime, index) => (
                         <div key={index} className="library__list">
