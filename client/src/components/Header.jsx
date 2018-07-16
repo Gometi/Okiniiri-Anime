@@ -34,7 +34,6 @@ class Header extends Component {
         
     }
     checkStatus(){
-        console.log('dfdfd')
         if (!localStorage.getItem('authToken')){
           this.setState({
               status: "You are not Logged In!"

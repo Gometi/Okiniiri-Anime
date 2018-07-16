@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import './AnimeDetails.css';
 import Header from './Header';
 import UserReview from './UserReview';
-import { Button } from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import Add_remove_anime from "./Add_remove_anime";
+
 import jwtDecode from 'jwt-decode';
 
 class AnimeDetails extends Component {
@@ -34,16 +34,10 @@ class AnimeDetails extends Component {
             show: false
 
         }
-        this.add = "Add To Library";
-        this.remove = "Remove From Library";
-        this.notInLibrary = "Not In Libraby";
-        this.alreadyInLibrary = "Is In Your Library"
-        this.library = false;
+        
         this.link = "https://www.youtube.com/embed/";
-        this.addToLibrary = this.addToLibrary.bind(this);
-        this.removeFromLibrary = this.removeFromLibrary.bind(this);
+       
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.save = this.save.bind(this);
         this.display = this.display.bind(this);
     }
 
@@ -124,72 +118,14 @@ class AnimeDetails extends Component {
         }
     }
 
-    fetchUserReview() {
-        //  let data = {
-        //      anime_name: this.state.name,
-        //      user_id: this.getUser().id
-        //  }
-
-
-        //    const options = {
-        //        method: "POST",
-        //        headers: {
-        //            "Content-Type": "application/json"
-        //        },
-        //        body: JSON.stringify(data)
-        //    }
-        //    fetch('/reviews/user_review', options)
-        //        .then(resp => {
-        //            if (!resp.ok) throw new Error(resp.statusMessage);
-        //            return resp.json();
-        //        })
-        //        .then(response => console.log(response));
-    }
+    
 
 
     componentDidMount() {
         this.fetchAnime();
     }
 
-    addToLibrary() {
-        if (!localStorage.getItem("authToken")) {
-            alert('You Are Not Logged In!!')
-        }
-        else {
-            const anime = {
-                id: this.state.id,
-                name: this.state.name,
-                user_id: this.getUser().id
-            }
-            this.props.addToLibrary(anime);
-            this.setState({
-                anime: "Added To Library"
-            })
-            this.library = true;
-        }
-
-    }
-
-    removeFromLibrary() {
-
-        if (!localStorage.getItem("authToken")) {
-            alert('You Are Not Logged In!!')
-        }
-        else{
-            const options = {
-                method: "DELETE"
-            }
-            fetch(`/animes/${this.state.id}`, options)
-                .then(resp => {
-                    if (!resp.ok) throw new Error(resp.statusMessage);
-                    return resp.json();
-                })
-                .then(console.log('deleted'))
-
-            this.library = false;
-        }
-        
-    }
+    
 
     handleInputChange(e) {
         const { name, value } = e.target;
@@ -198,33 +134,9 @@ class AnimeDetails extends Component {
         });
     }
 
-    createReview() {
-        let reviewData = {
-            review: this.state.review,
-            anime_name: this.state.name,
-            user_name: this.getUser().username,
-            user_id: this.getUser().id
-        }
+   
 
-        const options = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(reviewData)
-        }
-        fetch('/reviews', options)
-            .then(resp => {
-                if (!resp.ok) throw new Error(resp.statusMessage);
-                return resp.json();
-            })
-            .then(response => console.log(response));
-    }
-
-    save(e) {
-        e.preventDefault();
-        this.createReview();
-    }
+    
 
     // toggle the trailer
     display() {
@@ -290,27 +202,15 @@ class AnimeDetails extends Component {
                         }
 
                         <div>
-                            {/* <button onClick={this.library ? this.removeFromLibrary : this.addToLibrary} className="details--add">{this.state.id ? this.remove : this.add}</button> */}
-                            <button onClick={this.addToLibrary} className="details--add">Add To Watch List</button>
-                            <button onClick={this.removeFromLibrary} className="details--remove">Remove From Watch List</button>
-                            <div className="add_indicator">
-                                <p>{this.state.name} {this.library ? this.alreadyInLibrary : this.notInLibrary}</p>
-                            </div>
+                            
+
+                            <Add_remove_anime id={this.state.id} anime_name={this.state.name}/>
                         </div>
                     </div>
 
                     <div>
 
-                        <UserReview id={this.props.id} anime_name={this.state.anime_name} />
-
-                        {/* <h3>User Review</h3>
-                        <form>
-                            <textarea name="review" value={this.state.review} onChange={this.handleInputChange}></textarea>
-                            <div>
-                                <button onClick={this.save}>Save</button>
-                            </div>
-                            
-                        </form> */}
+                        <UserReview id={this.props.id} />
 
                     </div>
                 </div>

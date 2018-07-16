@@ -153,7 +153,9 @@ class UserReview extends Component {
     }
 
     componentDidMount() {
-        this.fetchAnime();
+        if (localStorage.getItem('authToken')) {
+            this.fetchAnime();
+        }
     }
 
     render() {
