@@ -59,7 +59,7 @@ class Register extends Component {
                             <input required className="register__input" type="password" onChange={this.handleInputChange} value={this.state.password} name="password" />
                         </label>
                     </div>
-                    <button className="register__btn">register</button>
+                    <button className="register__btn">Register</button>
                 </form>
             </div>
         )
