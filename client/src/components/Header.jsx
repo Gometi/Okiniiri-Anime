@@ -14,6 +14,7 @@ class Header extends Component {
             status: ""
         }
         this.checkStatus = this.checkStatus.bind(this);
+        this.logOut = this.logOut.bind(this);
     }
 
 
@@ -31,6 +32,9 @@ class Header extends Component {
 
     logOut(){
         localStorage.setItem('authToken', '');
+        this.setState({
+            currentUser: ""
+        })
         
     }
     checkStatus(){

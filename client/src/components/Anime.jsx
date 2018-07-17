@@ -10,7 +10,7 @@ class Anime extends Component{
        this.state = {
            id: "",
            name: "",
-           posterImage: ""
+           posterImage: require("./images/loading.gif") 
        }
         this.link = '/anime_details/'
     }
@@ -42,7 +42,7 @@ class Anime extends Component{
         return(
             <div className="anime">
                 <Link to={this.link + this.state.id}>
-                    <img className="anime__img" src={this.state.posterImage} />
+                    <img className="anime__img" src={this.state.posterImage} alt="" />
                 </Link>
                 
                 <p className="anime__title">{this.state.name}</p>

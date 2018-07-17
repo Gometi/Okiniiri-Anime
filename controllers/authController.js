@@ -10,22 +10,23 @@ function receiveToken(req, res, next) {
 };
 
 // - `restrict` - middleware that uses `tokenService.verify` to check the token. If the token is valid, the user is permitted to access subsequent middleware. Otherwise, the user gets a 401 response
-function restrict(req, res, next) {
-    tokenService.verify(req.authToken)
-        .then(data => {
-            res.locals.user = data;
-            next();
-        })
-        .catch(err => res.status(401).json({
-            status: 'Error',
-            message: 'Invalid credentials'
-        }))
-}
+// function restrict(req, res, next) {
+//     tokenService.verify(req.authToken)
+//         .then(data => {
+//             res.locals.user = data;
+//             next();
+//         })
+//         .catch(err => res.status(401).json({
+//             status: 'Error',
+//             message: 'Invalid Username or Password'
+//         }))
+// }
 
 // - `register` - route handler that will create a new user using the User model and then creates a JWT for that user and sends it in response.
 function register(req, res) {
     userModel.register(req.body)
         .catch(err => res.status(401).json({
+            status: 'Error',
             message: 'Username taken'
         }))
         .then(data => tokenService.makeToken({
@@ -44,7 +45,7 @@ function login(req, res, next) {
     userModel.login(req.body)
         .catch(err => res.status(401).json({
             status: 'Error',
-            message: 'Invalid credentails'
+            message: 'Invalid Username or Password'
         }))
         .then(data => tokenService.makeToken({
             id: data.id,
@@ -61,6 +62,6 @@ function login(req, res, next) {
 module.exports = {
     receiveToken,
     register,
-    restrict,
+    // restrict,
     login
 }

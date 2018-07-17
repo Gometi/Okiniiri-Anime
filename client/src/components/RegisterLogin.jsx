@@ -46,15 +46,18 @@ class RegisterLogin extends Component {
         }
         fetch(url, options)
             .then(resp => {
-                if(resp.ok){
-                    return resp.json();
-                }else{
-                    this.setState({
-                        error: "Invalid Username or Password!!"
-                    });
-                }
-                // if (!resp.ok) throw new Error(resp.statusMessage);
+               
+                return resp.json();
                 
+            })
+            .then(res =>{
+                if(res.status === 'Error'){
+                    this.setState({
+                        error: res.message
+                    });
+                }else{
+                    return res
+                }
             })
             .then(data =>{
                 if(data){
@@ -65,7 +68,7 @@ class RegisterLogin extends Component {
                 }
             })
             .catch(err =>{
-                console.log(err.message)
+                console.log('error',err.message)
             })
     }
 

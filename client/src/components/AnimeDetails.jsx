@@ -12,9 +12,9 @@ class AnimeDetails extends Component {
         this.state = {
             id: "",
             name: "",
-            posterImage: "",
+            posterImage: require("./images/loading.gif"),
             synopsis: "",
-            coverImage: "",
+            coverImage: require("./images/loading.gif"),
             Japanese: "",
             showType: "",
             status: "",
