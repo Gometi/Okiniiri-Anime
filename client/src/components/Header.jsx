@@ -54,7 +54,7 @@ class Header extends Component {
                 <div className="header">
 
                     <div className="header__logo">
-                        <img src={require("./images/logo.PNG")} className="header__img" />
+                        <img src={require("./images/logo.PNG")} className="header__img" alt="logo" />
                     </div>
 
                     <nav >
@@ -69,7 +69,7 @@ class Header extends Component {
 
                 <div className="hamburger">
 
-                    <label className="hamburger__button" for="toggle">
+                    <label className="hamburger__button" htmlFor="toggle">
                         <span className="hamburger__icon"> &nbsp; </span>
                     </label>
                     <input type="checkbox" className="hamburger__checkbox" id="toggle" />

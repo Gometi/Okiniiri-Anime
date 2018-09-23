@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {Redirect} from 'react-router-dom';
 import './SearchBar.css';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import { faCoffee, faSearch } from '@fortawesome/fontawesome-free-solid';
+import { faSearch } from '@fortawesome/fontawesome-free-solid';
 
 class SearchBar extends Component{
     constructor(props){

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import './AnimeDetails.css';
 import jwtDecode from 'jwt-decode';
 
-class Add_remove_anime extends Component{
+class AddRemoveAnime extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -120,4 +120,4 @@ class Add_remove_anime extends Component{
         )
     }
 }
-export default Add_remove_anime;
+export default AddRemoveAnime;

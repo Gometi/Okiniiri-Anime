@@ -9,7 +9,10 @@ class Login extends Component {
             password: "",
             email: ""
         }
-        this.userData;
+        this.userData = {
+            url: '',
+            post: {}
+        };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }

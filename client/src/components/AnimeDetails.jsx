@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import './AnimeDetails.css';
 import Header from './Header';
 import UserReview from './UserReview';
-import Add_remove_anime from "./Add_remove_anime";
+import AddRemoveAnime from "./AddRemoveAnime";
 
 import jwtDecode from 'jwt-decode';
 
@@ -66,7 +66,6 @@ class AnimeDetails extends Component {
                 })
 
                 this.fetchStreamingLinks();
-                this.fetchUserReview();
             })
             .catch(err => console.log(`There is an error: ${err}`));
 
@@ -150,7 +149,7 @@ class AnimeDetails extends Component {
             <div className="details">
                 <Header />
                 <div className="details__header">
-                    <img className="details--img" src={this.state.coverImage} />
+                    <img className="details--img" src={this.state.coverImage} alt="details" />
                     <h2 className="details--head">{this.state.name}</h2>
                     <div className="details--overlay"></div>
                 </div>
@@ -163,7 +162,7 @@ class AnimeDetails extends Component {
                     </div>
 
                     <div className="info--list">
-                        <img className="details__pic" src={this.state.posterImage} />
+                        <img className="details__pic" src={this.state.posterImage} alt="poster" />
                         <h3 className="list--head">Anime Details</h3>
                         <p>English: {this.state.name}</p>
                         <p>Japanese: {this.state.Japanese}</p>
@@ -204,7 +203,7 @@ class AnimeDetails extends Component {
                         <div>
                             
 
-                            <Add_remove_anime id={this.state.id} anime_name={this.state.name}/>
+                            <AddRemoveAnime id={this.state.id} anime_name={this.state.name}/>
                         </div>
                     </div>
 

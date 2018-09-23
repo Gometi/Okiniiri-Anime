@@ -6,16 +6,9 @@ import Library from './components/Library';
 import RegisterLogin from './components/RegisterLogin';
 import SearchResults from './components/SearchResults';
 import Footer from './components/Footer';
-import {Switch, Route, Redirect} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    
-    
-  }
-
-  
 
   render() {
     return (

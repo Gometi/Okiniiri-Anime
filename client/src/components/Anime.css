@@ -24,6 +24,7 @@
 }
 
 
+
 .anime__img{
   width: 20rem;
   height: 28rem;
@@ -35,9 +36,18 @@
   flex-direction: row;
 }
 
+
+
 @media screen and (max-width: 660px) {
   .anime__list{
     display: flex;
     justify-content: center;
+    margin-left: -14rem;
+  }
+}
+
+@media screen and (max-width: 1535px) {
+  .animeList__container{
+    margin-left: 14rem;
   }
 }
