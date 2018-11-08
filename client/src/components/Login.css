@@ -5,6 +5,7 @@
     border: 2px solid rgba(108, 11, 236, 0.863);
     text-align: center;
     margin: 2rem 2rem;
+    font-size: 2rem;
 }
 
 /* input box */
@@ -28,7 +29,7 @@
     margin: 0 auto;
     background-color: rgba(108, 11, 236, 0.863);
     padding: 1rem;
-    width: 40%;
+    width: 30%;
     color: rgba(240, 248, 255, 0.918);
 }
 

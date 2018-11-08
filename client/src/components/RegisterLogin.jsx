@@ -85,13 +85,12 @@ class RegisterLogin extends Component {
 
             <div>
             <Header/>
-            <div className="container">
+            <div className="container-fluid">
                     <h2 className="error_message">{this.state.error}</h2>
-                    <div className="registerLogin">
+                    <div className="registerLogin row justify-content-center">
                         <div className="registerLogin__login">
                             <Login registerPostRequest={this.registerPostRequest.bind(this)} />
                         </div>
-                        <br />
                         <div className="registerLogin__register">
                             <Register registerPostRequest={this.registerPostRequest.bind(this)} />
                         </div>
