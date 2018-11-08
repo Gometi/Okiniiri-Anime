@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import jwtDecode from "jwt-decode";
@@ -6,7 +6,7 @@ import jwtDecode from "jwt-decode";
 import './Header.css';
 
 class Header extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
 
         this.state = {
@@ -18,10 +18,10 @@ class Header extends Component {
     }
 
 
-    
-    componentDidMount(){
+
+    componentDidMount() {
         let user = "";
-        if (localStorage.getItem('authToken')){
+        if (localStorage.getItem('authToken')) {
             user = jwtDecode(localStorage.getItem('authToken'));
             this.setState({
                 currentUser: user.username
@@ -30,32 +30,32 @@ class Header extends Component {
 
     }
 
-    logOut(){
+    logOut() {
         localStorage.setItem('authToken', '');
         this.setState({
             currentUser: ""
         })
-        
+
     }
-    checkStatus(){
-        if (!localStorage.getItem('authToken')){
-          this.setState({
-              status: "You are not Logged In!"
-          })
+    checkStatus() {
+        if (!localStorage.getItem('authToken')) {
+            this.setState({
+                status: "You are not Logged In!"
+            })
         }
     }
 
 
 
-    render(){
+    render() {
         return (
             <div>
 
                 <div className="header">
 
-                    <div className="header__logo">
+                    <Link to="/"><div className="header__logo">
                         <img src={require("./images/logo.PNG")} className="header__img" alt="logo" />
-                    </div>
+                    </div></Link>
 
                     <nav >
                         <ul className="header__links">
@@ -80,20 +80,20 @@ class Header extends Component {
                             <li className={localStorage.getItem('authToken') ? 'hide' : 'show'}><Link to="/register_login" className="links--bar yoo"> Login</Link></li>
                             <li onClick={this.checkStatus}><Link to={localStorage.getItem('authToken') ? '/library' : '#'} className="links--bar yoo">Library</Link></li>
                             <li className={localStorage.getItem('authToken') ? 'show' : 'hide'} onClick={this.logOut}><Link to="/" className="links--bar yoo">Logout</Link></li>
-                            
+
                         </ul>
                     </nav>
                 </div>
 
                 <div className="header__greet">
-                    <h3 className="greet--header">Welcome {this.state.currentUser}</h3>
-                    <h3 className="status">{this.state.status}</h3>
+                    <h1 className="greet--header">Welcome {this.state.currentUser}</h1>
+                    <h1 className="status">{this.state.status}</h1>
                     <SearchBar />
                 </div>
             </div>
         )
     }
-    
+
 }
 
 export default Header;

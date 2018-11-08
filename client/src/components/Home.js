@@ -9,7 +9,9 @@ import Header from './Header';
 // import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const animeList = [
+    'Shingeki no Kyojin',
     'Death note',
+    'Boku no Hero Academia',
     'Cowboy Bebop',
     'naruto',
     'one punch man',
@@ -57,13 +59,15 @@ componentDidMount(){
                     </p>
                     </div>
                 </div>
-
-                <div className="animeList__container">
+                
+                <div className="container-fluid">
+                <div className="animeList__container row justify-content-center">
                     {animeList.map((anime, index) => (
-                        <div className="anime__list" key={index}>
+                        <div key={index}>
                             <Anime name={anime} />
                         </div>
                     ))}
+                </div>
                 </div>
             </div>
         )

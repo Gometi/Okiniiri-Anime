@@ -34,9 +34,9 @@ class AnimeDetails extends Component {
             show: false
 
         }
-        
+
         this.link = "https://www.youtube.com/embed/";
-       
+
         this.handleInputChange = this.handleInputChange.bind(this);
         this.display = this.display.bind(this);
     }
@@ -117,14 +117,14 @@ class AnimeDetails extends Component {
         }
     }
 
-    
+
 
 
     componentDidMount() {
         this.fetchAnime();
     }
 
-    
+
 
     handleInputChange(e) {
         const { name, value } = e.target;
@@ -133,9 +133,9 @@ class AnimeDetails extends Component {
         });
     }
 
-   
 
-    
+
+
 
     // toggle the trailer
     display() {
@@ -195,15 +195,14 @@ class AnimeDetails extends Component {
                     <div className="details--video">
 
                         {
-                            this.state.show ? <iframe title="trailer" width="420" height="315"
+                            this.state.show ? <div className="container embed-responsive embed-responsive-16by9"><iframe className="embed-responsive-item" title="trailer"
                                 src={this.link + this.state.trailer}>
-                            </iframe> : null
+                            </iframe></div> : null
                         }
 
                         <div>
-                            
-
-                            <AddRemoveAnime id={this.state.id} anime_name={this.state.name}/>
+                            <br />
+                            <AddRemoveAnime id={this.state.id} anime_name={this.state.name} />
                         </div>
                     </div>
 

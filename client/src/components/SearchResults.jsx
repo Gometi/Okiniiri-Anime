@@ -5,8 +5,8 @@ import Header from './Header';
 import './SearchResult.css';
 
 
-class SearchResults extends Component{
-    constructor(props){
+class SearchResults extends Component {
+    constructor(props) {
         super(props)
         this.state = {
             animeList: []
@@ -28,36 +28,35 @@ class SearchResults extends Component{
                 this.setState({
                     animeList: anime.data
                 })
-                console.log(this.state.animeList[0].attributes.titles.en_jp)
             })
             .catch(err => console.log(`There is an error: ${err}`));
 
     }
 
-    componentDidMount(){
-    this.fetchAnime();
+    componentDidMount() {
+        this.fetchAnime();
     }
 
-    
 
-    render(){
-        return(
+
+    render() {
+        return (
             <div>
-            <Header/>
-                
-            <div className="searchResult">
-                <h2 className="searchResult__header">Search Results:</h2>
-                <div >
-                    {this.state.animeList.map(anime => (
-                        <div className="searchResult__container" key={anime.id}>
-                            <Link to={this.link + anime.id}> 
-                            <h3 className="searchResult__title">{anime.attributes.titles.en_jp}</h3>
-                                <img className="searchResult__img" src={anime.attributes.posterImage.tiny} alt="img"/>
-                            </Link>
-                        </div>
-                    ))}
+                <Header />
+
+                <div className="searchResult">
+                    <h2 className="searchResult__header">Search Results:</h2>
+                    <div >
+                        {this.state.animeList.map(anime => (
+                            <div className="searchResult__container" key={anime.id}>
+                                <Link to={this.link + anime.id}>
+                                    <h3 className="searchResult__title">{anime.attributes.titles.en_jp}</h3>
+                                    <img className="searchResult__img" src={anime.attributes.posterImage.tiny} alt="img" />
+                                </Link>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
             </div>
         )
     }

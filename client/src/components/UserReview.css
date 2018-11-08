@@ -1,17 +1,24 @@
 .review{
     text-align: center;
     margin-top: 4rem;
+    font-size: 180%;
 }
 
 .review__header{
     border: 1px solid black;
     display: inline-block;
     padding: 1rem;
+    font-size: 200%;
+}
+
+.review__review{
+    font-size: 150%;
 }
 
 .review__textArea{
     width: 80%;
-    height: 10vh;
+    height: 14vh;
+    font-size: 150%;
 }
 
 .review__save, .review__edit{

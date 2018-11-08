@@ -42,6 +42,7 @@ class AddRemoveAnime extends Component{
                                     inLibrary: true
                                 })
                             }
+                            return null;
                         })
                     }, 500);
                     

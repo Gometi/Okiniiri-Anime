@@ -9,16 +9,19 @@
     color: rgba(245, 246, 248, 0.932);
     position: relative;
     width: 100%;
+    font-size: 2rem;
+
 }
 
 .footer__quote{
-    font-size: 3.2rem;
+    font-size: 4rem;
     padding: 1rem;
     font-family: 'Cookie', cursive;
 }
 
-.footer__subquotes{
+.footer__subquotes h5{
     font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
 }
 
 .footer__copyright{
@@ -26,6 +29,7 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    font-size: 1rem;
     padding: 4px;
+    font-size: 2rem;
+
 }

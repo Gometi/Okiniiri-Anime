@@ -4,6 +4,10 @@
     max-height: 50rem;
     margin: 0 auto;
 }
+.caption-color{
+    background-color: rgba(7, 0, 0, .3);
+    font-size: 20px;
+}
 
 .slider__para{
     color: rgba(9, 206, 140, 0.89);
